@@ -31,6 +31,7 @@ import { AdSlot } from "@/components/ad-slot";
 import { buildTimeSlots } from "@/lib/availability";
 import { UNAVAILABLE_MESSAGE } from "@/lib/blocked-dates";
 import { closedWeekdays } from "@/lib/settings";
+import { isPastUkSlot, ukNow, ukToday } from "@/lib/uk-time";
 import { useSettings } from "@/lib/site-settings";
 
 const title = "Book A Service — Mayor Beauty Place";
