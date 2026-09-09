@@ -1,5 +1,7 @@
 import { getDb } from "./db.server";
 import { isOpenDay, isSlotAvailable } from "./availability.server";
+import { getBlockForDate } from "./blocked-dates.server";
+import { UNAVAILABLE_MESSAGE } from "./blocked-dates";
 import type { bookingSchema, multiBookingSchema } from "./services.server";
 import type { z } from "zod";
 
@@ -86,6 +88,12 @@ export async function createPendingBooking(input: MultiBookingInput) {
 
   const total = Number(items.reduce((s, i) => s + i.line_total, 0).toFixed(2));
   const totalDuration = items.reduce((s, i) => s + i.duration_minutes * i.quantity, 0);
+
+  // A blocked date (holiday, break, private event) overrides opening hours.
+  const block = await getBlockForDate(input.preferred_date).catch(() => null);
+  if (block) {
+    throw new BookingError(UNAVAILABLE_MESSAGE, 400);
+  }
 
   // The salon can switch weekdays off in admin Settings.
   if (!(await isOpenDay(input.preferred_date))) {

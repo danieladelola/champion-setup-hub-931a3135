@@ -6,6 +6,7 @@ import {
   getDayAvailability,
   getFullyBookedDates,
 } from "@/lib/availability.server";
+import { getBlockedDaysInMonth } from "@/lib/blocked-dates.server";
 import { getDb } from "@/lib/db.server";
 
 async function serviceDuration(serviceId: string | null) {
@@ -48,11 +49,17 @@ export const Route = createFileRoute("/api/availability")({
             if (!/^\d{4}-\d{2}$/.test(month)) {
               return json({ error: "Invalid month" }, { status: 400 });
             }
-            const [fullyBooked, closed] = await Promise.all([
+            const [fullyBooked, closed, blocked] = await Promise.all([
               getFullyBookedDates(month, duration),
               getClosedWeekdays(),
+              getBlockedDaysInMonth(month).catch(() => [] as string[]),
             ]);
-            return json({ month, fully_booked: fullyBooked, closed_weekdays: closed });
+            return json({
+              month,
+              fully_booked: fullyBooked,
+              closed_weekdays: closed,
+              blocked_dates: blocked,
+            });
           }
 
           return json({ error: "Provide a date or month" }, { status: 400 });
