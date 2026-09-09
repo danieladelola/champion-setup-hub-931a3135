@@ -10,33 +10,914 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as BeforeAndAfterRouteImport } from './routes/before-and-after'
+import { Route as BookRouteImport } from './routes/book'
+import { Route as CartRouteImport } from './routes/cart'
+import { Route as CheckoutRouteImport } from './routes/checkout'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CookiePolicyRouteImport } from './routes/cookie-policy'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as TermsOfServiceRouteImport } from './routes/terms-of-service'
+import { Route as WishlistRouteImport } from './routes/wishlist'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
+import { Route as AdminAdsRouteImport } from './routes/admin.ads'
+import { Route as AdminBookingsRouteImport } from './routes/admin.bookings'
+import { Route as AdminCustomersRouteImport } from './routes/admin.customers'
+import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
+import { Route as AdminGalleryRouteImport } from './routes/admin.gallery'
+import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as AdminMessagesRouteImport } from './routes/admin.messages'
+import { Route as AdminOrdersRouteImport } from './routes/admin.orders'
+import { Route as AdminProductsRouteImport } from './routes/admin.products'
+import { Route as AdminServicesRouteImport } from './routes/admin.services'
+import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
+import { Route as ApiAdsRouteImport } from './routes/api/ads'
+import { Route as ApiAvailabilityRouteImport } from './routes/api/availability'
+import { Route as ApiBookingCheckoutSessionRouteImport } from './routes/api/booking-checkout-session'
+import { Route as ApiBookingsRouteImport } from './routes/api/bookings'
+import { Route as ApiCheckoutSessionRouteImport } from './routes/api/checkout-session'
+import { Route as ApiMessagesRouteImport } from './routes/api/messages'
+import { Route as ApiOrdersRouteImport } from './routes/api/orders'
+import { Route as ApiPaymentStatusRouteImport } from './routes/api/payment-status'
+import { Route as ApiProductsRouteImport } from './routes/api/products'
+import { Route as ApiServicesRouteImport } from './routes/api/services'
+import { Route as ApiSettingsRouteImport } from './routes/api/settings'
+import { Route as ApiTransformationsRouteImport } from './routes/api/transformations'
+import { Route as BookingSuccessReferenceRouteImport } from './routes/booking-success.$reference'
+import { Route as OrderSuccessOrderNumberRouteImport } from './routes/order-success.$orderNumber'
+import { Route as ShopIndexRouteImport } from './routes/shop.index'
+import { Route as ShopSlugRouteImport } from './routes/shop.$slug'
+import { Route as ApiAdminAdsRouteImport } from './routes/api/admin/ads'
+import { Route as ApiAdminBookingsRouteImport } from './routes/api/admin/bookings'
+import { Route as ApiAdminCustomersRouteImport } from './routes/api/admin/customers'
+import { Route as ApiAdminLoginRouteImport } from './routes/api/admin/login'
+import { Route as ApiAdminLogoutRouteImport } from './routes/api/admin/logout'
+import { Route as ApiAdminMeRouteImport } from './routes/api/admin/me'
+import { Route as ApiAdminMessagesRouteImport } from './routes/api/admin/messages'
+import { Route as ApiAdminOrdersRouteImport } from './routes/api/admin/orders'
+import { Route as ApiAdminProductsRouteImport } from './routes/api/admin/products'
+import { Route as ApiAdminServiceCategoriesRouteImport } from './routes/api/admin/service-categories'
+import { Route as ApiAdminServicesRouteImport } from './routes/api/admin/services'
+import { Route as ApiAdminSettingsRouteImport } from './routes/api/admin/settings'
+import { Route as ApiAdminStatsRouteImport } from './routes/api/admin/stats'
+import { Route as ApiAdminTransformationsRouteImport } from './routes/api/admin/transformations'
+import { Route as ApiAdminUploadRouteImport } from './routes/api/admin/upload'
+import { Route as ApiBookingsReferenceRouteImport } from './routes/api/bookings.$reference'
+import { Route as ApiMediaIdRouteImport } from './routes/api/media.$id'
+import { Route as ApiOrdersOrderNumberRouteImport } from './routes/api/orders.$orderNumber'
+import { Route as ApiProductsSlugRouteImport } from './routes/api/products.$slug'
+import { Route as ApiPublicHealthRouteImport } from './routes/api/public/health'
+import { Route as ApiPublicLiveRouteImport } from './routes/api/public/live'
+import { Route as ApiPublicStripeWebhookRouteImport } from './routes/api/public/stripe-webhook'
+import { Route as ApiAdminAdsIdRouteImport } from './routes/api/admin/ads.$id'
+import { Route as ApiAdminBookingsIdRouteImport } from './routes/api/admin/bookings.$id'
+import { Route as ApiAdminMessagesIdRouteImport } from './routes/api/admin/messages.$id'
+import { Route as ApiAdminOrdersIdRouteImport } from './routes/api/admin/orders.$id'
+import { Route as ApiAdminProductsIdRouteImport } from './routes/api/admin/products.$id'
+import { Route as ApiAdminServiceCategoriesIdRouteImport } from './routes/api/admin/service-categories.$id'
+import { Route as ApiAdminServicesIdRouteImport } from './routes/api/admin/services.$id'
+import { Route as ApiAdminTransformationsIdRouteImport } from './routes/api/admin/transformations.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BeforeAndAfterRoute = BeforeAndAfterRouteImport.update({
+  id: '/before-and-after',
+  path: '/before-and-after',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookRoute = BookRouteImport.update({
+  id: '/book',
+  path: '/book',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CartRoute = CartRouteImport.update({
+  id: '/cart',
+  path: '/cart',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CookiePolicyRoute = CookiePolicyRouteImport.update({
+  id: '/cookie-policy',
+  path: '/cookie-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsOfServiceRoute = TermsOfServiceRouteImport.update({
+  id: '/terms-of-service',
+  path: '/terms-of-service',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WishlistRoute = WishlistRouteImport.update({
+  id: '/wishlist',
+  path: '/wishlist',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminAdsRoute = AdminAdsRouteImport.update({
+  id: '/admin/ads',
+  path: '/admin/ads',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminBookingsRoute = AdminBookingsRouteImport.update({
+  id: '/admin/bookings',
+  path: '/admin/bookings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminCustomersRoute = AdminCustomersRouteImport.update({
+  id: '/admin/customers',
+  path: '/admin/customers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminDashboardRoute = AdminDashboardRouteImport.update({
+  id: '/admin/dashboard',
+  path: '/admin/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminGalleryRoute = AdminGalleryRouteImport.update({
+  id: '/admin/gallery',
+  path: '/admin/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminMessagesRoute = AdminMessagesRouteImport.update({
+  id: '/admin/messages',
+  path: '/admin/messages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminOrdersRoute = AdminOrdersRouteImport.update({
+  id: '/admin/orders',
+  path: '/admin/orders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminProductsRoute = AdminProductsRouteImport.update({
+  id: '/admin/products',
+  path: '/admin/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminServicesRoute = AdminServicesRouteImport.update({
+  id: '/admin/services',
+  path: '/admin/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/admin/settings',
+  path: '/admin/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdsRoute = ApiAdsRouteImport.update({
+  id: '/api/ads',
+  path: '/api/ads',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAvailabilityRoute = ApiAvailabilityRouteImport.update({
+  id: '/api/availability',
+  path: '/api/availability',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiBookingCheckoutSessionRoute =
+  ApiBookingCheckoutSessionRouteImport.update({
+    id: '/api/booking-checkout-session',
+    path: '/api/booking-checkout-session',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiBookingsRoute = ApiBookingsRouteImport.update({
+  id: '/api/bookings',
+  path: '/api/bookings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiCheckoutSessionRoute = ApiCheckoutSessionRouteImport.update({
+  id: '/api/checkout-session',
+  path: '/api/checkout-session',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiMessagesRoute = ApiMessagesRouteImport.update({
+  id: '/api/messages',
+  path: '/api/messages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiOrdersRoute = ApiOrdersRouteImport.update({
+  id: '/api/orders',
+  path: '/api/orders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPaymentStatusRoute = ApiPaymentStatusRouteImport.update({
+  id: '/api/payment-status',
+  path: '/api/payment-status',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiProductsRoute = ApiProductsRouteImport.update({
+  id: '/api/products',
+  path: '/api/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiServicesRoute = ApiServicesRouteImport.update({
+  id: '/api/services',
+  path: '/api/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiSettingsRoute = ApiSettingsRouteImport.update({
+  id: '/api/settings',
+  path: '/api/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiTransformationsRoute = ApiTransformationsRouteImport.update({
+  id: '/api/transformations',
+  path: '/api/transformations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookingSuccessReferenceRoute = BookingSuccessReferenceRouteImport.update({
+  id: '/booking-success/$reference',
+  path: '/booking-success/$reference',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrderSuccessOrderNumberRoute = OrderSuccessOrderNumberRouteImport.update({
+  id: '/order-success/$orderNumber',
+  path: '/order-success/$orderNumber',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopIndexRoute = ShopIndexRouteImport.update({
+  id: '/shop/',
+  path: '/shop/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopSlugRoute = ShopSlugRouteImport.update({
+  id: '/shop/$slug',
+  path: '/shop/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminAdsRoute = ApiAdminAdsRouteImport.update({
+  id: '/api/admin/ads',
+  path: '/api/admin/ads',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminBookingsRoute = ApiAdminBookingsRouteImport.update({
+  id: '/api/admin/bookings',
+  path: '/api/admin/bookings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminCustomersRoute = ApiAdminCustomersRouteImport.update({
+  id: '/api/admin/customers',
+  path: '/api/admin/customers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminLoginRoute = ApiAdminLoginRouteImport.update({
+  id: '/api/admin/login',
+  path: '/api/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminLogoutRoute = ApiAdminLogoutRouteImport.update({
+  id: '/api/admin/logout',
+  path: '/api/admin/logout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminMeRoute = ApiAdminMeRouteImport.update({
+  id: '/api/admin/me',
+  path: '/api/admin/me',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminMessagesRoute = ApiAdminMessagesRouteImport.update({
+  id: '/api/admin/messages',
+  path: '/api/admin/messages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminOrdersRoute = ApiAdminOrdersRouteImport.update({
+  id: '/api/admin/orders',
+  path: '/api/admin/orders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminProductsRoute = ApiAdminProductsRouteImport.update({
+  id: '/api/admin/products',
+  path: '/api/admin/products',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminServiceCategoriesRoute =
+  ApiAdminServiceCategoriesRouteImport.update({
+    id: '/api/admin/service-categories',
+    path: '/api/admin/service-categories',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiAdminServicesRoute = ApiAdminServicesRouteImport.update({
+  id: '/api/admin/services',
+  path: '/api/admin/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminSettingsRoute = ApiAdminSettingsRouteImport.update({
+  id: '/api/admin/settings',
+  path: '/api/admin/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminStatsRoute = ApiAdminStatsRouteImport.update({
+  id: '/api/admin/stats',
+  path: '/api/admin/stats',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminTransformationsRoute = ApiAdminTransformationsRouteImport.update({
+  id: '/api/admin/transformations',
+  path: '/api/admin/transformations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminUploadRoute = ApiAdminUploadRouteImport.update({
+  id: '/api/admin/upload',
+  path: '/api/admin/upload',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiBookingsReferenceRoute = ApiBookingsReferenceRouteImport.update({
+  id: '/$reference',
+  path: '/$reference',
+  getParentRoute: () => ApiBookingsRoute,
+} as any)
+const ApiMediaIdRoute = ApiMediaIdRouteImport.update({
+  id: '/api/media/$id',
+  path: '/api/media/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiOrdersOrderNumberRoute = ApiOrdersOrderNumberRouteImport.update({
+  id: '/$orderNumber',
+  path: '/$orderNumber',
+  getParentRoute: () => ApiOrdersRoute,
+} as any)
+const ApiProductsSlugRoute = ApiProductsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ApiProductsRoute,
+} as any)
+const ApiPublicHealthRoute = ApiPublicHealthRouteImport.update({
+  id: '/api/public/health',
+  path: '/api/public/health',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicLiveRoute = ApiPublicLiveRouteImport.update({
+  id: '/api/public/live',
+  path: '/api/public/live',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicStripeWebhookRoute = ApiPublicStripeWebhookRouteImport.update({
+  id: '/api/public/stripe-webhook',
+  path: '/api/public/stripe-webhook',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiAdminAdsIdRoute = ApiAdminAdsIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => ApiAdminAdsRoute,
+} as any)
+const ApiAdminBookingsIdRoute = ApiAdminBookingsIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => ApiAdminBookingsRoute,
+} as any)
+const ApiAdminMessagesIdRoute = ApiAdminMessagesIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => ApiAdminMessagesRoute,
+} as any)
+const ApiAdminOrdersIdRoute = ApiAdminOrdersIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => ApiAdminOrdersRoute,
+} as any)
+const ApiAdminProductsIdRoute = ApiAdminProductsIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => ApiAdminProductsRoute,
+} as any)
+const ApiAdminServiceCategoriesIdRoute =
+  ApiAdminServiceCategoriesIdRouteImport.update({
+    id: '/$id',
+    path: '/$id',
+    getParentRoute: () => ApiAdminServiceCategoriesRoute,
+  } as any)
+const ApiAdminServicesIdRoute = ApiAdminServicesIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => ApiAdminServicesRoute,
+} as any)
+const ApiAdminTransformationsIdRoute =
+  ApiAdminTransformationsIdRouteImport.update({
+    id: '/$id',
+    path: '/$id',
+    getParentRoute: () => ApiAdminTransformationsRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/before-and-after': typeof BeforeAndAfterRoute
+  '/book': typeof BookRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
+  '/contact': typeof ContactRoute
+  '/cookie-policy': typeof CookiePolicyRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/terms-of-service': typeof TermsOfServiceRoute
+  '/wishlist': typeof WishlistRoute
+  '/admin/ads': typeof AdminAdsRoute
+  '/admin/bookings': typeof AdminBookingsRoute
+  '/admin/customers': typeof AdminCustomersRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/gallery': typeof AdminGalleryRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/messages': typeof AdminMessagesRoute
+  '/admin/orders': typeof AdminOrdersRoute
+  '/admin/products': typeof AdminProductsRoute
+  '/admin/services': typeof AdminServicesRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/api/ads': typeof ApiAdsRoute
+  '/api/availability': typeof ApiAvailabilityRoute
+  '/api/booking-checkout-session': typeof ApiBookingCheckoutSessionRoute
+  '/api/bookings': typeof ApiBookingsRouteWithChildren
+  '/api/checkout-session': typeof ApiCheckoutSessionRoute
+  '/api/messages': typeof ApiMessagesRoute
+  '/api/orders': typeof ApiOrdersRouteWithChildren
+  '/api/payment-status': typeof ApiPaymentStatusRoute
+  '/api/products': typeof ApiProductsRouteWithChildren
+  '/api/services': typeof ApiServicesRoute
+  '/api/settings': typeof ApiSettingsRoute
+  '/api/transformations': typeof ApiTransformationsRoute
+  '/booking-success/$reference': typeof BookingSuccessReferenceRoute
+  '/order-success/$orderNumber': typeof OrderSuccessOrderNumberRoute
+  '/shop/$slug': typeof ShopSlugRoute
+  '/admin/': typeof AdminIndexRoute
+  '/shop/': typeof ShopIndexRoute
+  '/api/admin/ads': typeof ApiAdminAdsRouteWithChildren
+  '/api/admin/bookings': typeof ApiAdminBookingsRouteWithChildren
+  '/api/admin/customers': typeof ApiAdminCustomersRoute
+  '/api/admin/login': typeof ApiAdminLoginRoute
+  '/api/admin/logout': typeof ApiAdminLogoutRoute
+  '/api/admin/me': typeof ApiAdminMeRoute
+  '/api/admin/messages': typeof ApiAdminMessagesRouteWithChildren
+  '/api/admin/orders': typeof ApiAdminOrdersRouteWithChildren
+  '/api/admin/products': typeof ApiAdminProductsRouteWithChildren
+  '/api/admin/service-categories': typeof ApiAdminServiceCategoriesRouteWithChildren
+  '/api/admin/services': typeof ApiAdminServicesRouteWithChildren
+  '/api/admin/settings': typeof ApiAdminSettingsRoute
+  '/api/admin/stats': typeof ApiAdminStatsRoute
+  '/api/admin/transformations': typeof ApiAdminTransformationsRouteWithChildren
+  '/api/admin/upload': typeof ApiAdminUploadRoute
+  '/api/bookings/$reference': typeof ApiBookingsReferenceRoute
+  '/api/media/$id': typeof ApiMediaIdRoute
+  '/api/orders/$orderNumber': typeof ApiOrdersOrderNumberRoute
+  '/api/products/$slug': typeof ApiProductsSlugRoute
+  '/api/public/health': typeof ApiPublicHealthRoute
+  '/api/public/live': typeof ApiPublicLiveRoute
+  '/api/public/stripe-webhook': typeof ApiPublicStripeWebhookRoute
+  '/api/admin/ads/$id': typeof ApiAdminAdsIdRoute
+  '/api/admin/bookings/$id': typeof ApiAdminBookingsIdRoute
+  '/api/admin/messages/$id': typeof ApiAdminMessagesIdRoute
+  '/api/admin/orders/$id': typeof ApiAdminOrdersIdRoute
+  '/api/admin/products/$id': typeof ApiAdminProductsIdRoute
+  '/api/admin/service-categories/$id': typeof ApiAdminServiceCategoriesIdRoute
+  '/api/admin/services/$id': typeof ApiAdminServicesIdRoute
+  '/api/admin/transformations/$id': typeof ApiAdminTransformationsIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/before-and-after': typeof BeforeAndAfterRoute
+  '/book': typeof BookRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
+  '/contact': typeof ContactRoute
+  '/cookie-policy': typeof CookiePolicyRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/terms-of-service': typeof TermsOfServiceRoute
+  '/wishlist': typeof WishlistRoute
+  '/admin/ads': typeof AdminAdsRoute
+  '/admin/bookings': typeof AdminBookingsRoute
+  '/admin/customers': typeof AdminCustomersRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/gallery': typeof AdminGalleryRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/messages': typeof AdminMessagesRoute
+  '/admin/orders': typeof AdminOrdersRoute
+  '/admin/products': typeof AdminProductsRoute
+  '/admin/services': typeof AdminServicesRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/api/ads': typeof ApiAdsRoute
+  '/api/availability': typeof ApiAvailabilityRoute
+  '/api/booking-checkout-session': typeof ApiBookingCheckoutSessionRoute
+  '/api/bookings': typeof ApiBookingsRouteWithChildren
+  '/api/checkout-session': typeof ApiCheckoutSessionRoute
+  '/api/messages': typeof ApiMessagesRoute
+  '/api/orders': typeof ApiOrdersRouteWithChildren
+  '/api/payment-status': typeof ApiPaymentStatusRoute
+  '/api/products': typeof ApiProductsRouteWithChildren
+  '/api/services': typeof ApiServicesRoute
+  '/api/settings': typeof ApiSettingsRoute
+  '/api/transformations': typeof ApiTransformationsRoute
+  '/booking-success/$reference': typeof BookingSuccessReferenceRoute
+  '/order-success/$orderNumber': typeof OrderSuccessOrderNumberRoute
+  '/shop/$slug': typeof ShopSlugRoute
+  '/admin': typeof AdminIndexRoute
+  '/shop': typeof ShopIndexRoute
+  '/api/admin/ads': typeof ApiAdminAdsRouteWithChildren
+  '/api/admin/bookings': typeof ApiAdminBookingsRouteWithChildren
+  '/api/admin/customers': typeof ApiAdminCustomersRoute
+  '/api/admin/login': typeof ApiAdminLoginRoute
+  '/api/admin/logout': typeof ApiAdminLogoutRoute
+  '/api/admin/me': typeof ApiAdminMeRoute
+  '/api/admin/messages': typeof ApiAdminMessagesRouteWithChildren
+  '/api/admin/orders': typeof ApiAdminOrdersRouteWithChildren
+  '/api/admin/products': typeof ApiAdminProductsRouteWithChildren
+  '/api/admin/service-categories': typeof ApiAdminServiceCategoriesRouteWithChildren
+  '/api/admin/services': typeof ApiAdminServicesRouteWithChildren
+  '/api/admin/settings': typeof ApiAdminSettingsRoute
+  '/api/admin/stats': typeof ApiAdminStatsRoute
+  '/api/admin/transformations': typeof ApiAdminTransformationsRouteWithChildren
+  '/api/admin/upload': typeof ApiAdminUploadRoute
+  '/api/bookings/$reference': typeof ApiBookingsReferenceRoute
+  '/api/media/$id': typeof ApiMediaIdRoute
+  '/api/orders/$orderNumber': typeof ApiOrdersOrderNumberRoute
+  '/api/products/$slug': typeof ApiProductsSlugRoute
+  '/api/public/health': typeof ApiPublicHealthRoute
+  '/api/public/live': typeof ApiPublicLiveRoute
+  '/api/public/stripe-webhook': typeof ApiPublicStripeWebhookRoute
+  '/api/admin/ads/$id': typeof ApiAdminAdsIdRoute
+  '/api/admin/bookings/$id': typeof ApiAdminBookingsIdRoute
+  '/api/admin/messages/$id': typeof ApiAdminMessagesIdRoute
+  '/api/admin/orders/$id': typeof ApiAdminOrdersIdRoute
+  '/api/admin/products/$id': typeof ApiAdminProductsIdRoute
+  '/api/admin/service-categories/$id': typeof ApiAdminServiceCategoriesIdRoute
+  '/api/admin/services/$id': typeof ApiAdminServicesIdRoute
+  '/api/admin/transformations/$id': typeof ApiAdminTransformationsIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/before-and-after': typeof BeforeAndAfterRoute
+  '/book': typeof BookRoute
+  '/cart': typeof CartRoute
+  '/checkout': typeof CheckoutRoute
+  '/contact': typeof ContactRoute
+  '/cookie-policy': typeof CookiePolicyRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/terms-of-service': typeof TermsOfServiceRoute
+  '/wishlist': typeof WishlistRoute
+  '/admin/ads': typeof AdminAdsRoute
+  '/admin/bookings': typeof AdminBookingsRoute
+  '/admin/customers': typeof AdminCustomersRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/gallery': typeof AdminGalleryRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/admin/messages': typeof AdminMessagesRoute
+  '/admin/orders': typeof AdminOrdersRoute
+  '/admin/products': typeof AdminProductsRoute
+  '/admin/services': typeof AdminServicesRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/api/ads': typeof ApiAdsRoute
+  '/api/availability': typeof ApiAvailabilityRoute
+  '/api/booking-checkout-session': typeof ApiBookingCheckoutSessionRoute
+  '/api/bookings': typeof ApiBookingsRouteWithChildren
+  '/api/checkout-session': typeof ApiCheckoutSessionRoute
+  '/api/messages': typeof ApiMessagesRoute
+  '/api/orders': typeof ApiOrdersRouteWithChildren
+  '/api/payment-status': typeof ApiPaymentStatusRoute
+  '/api/products': typeof ApiProductsRouteWithChildren
+  '/api/services': typeof ApiServicesRoute
+  '/api/settings': typeof ApiSettingsRoute
+  '/api/transformations': typeof ApiTransformationsRoute
+  '/booking-success/$reference': typeof BookingSuccessReferenceRoute
+  '/order-success/$orderNumber': typeof OrderSuccessOrderNumberRoute
+  '/shop/$slug': typeof ShopSlugRoute
+  '/admin/': typeof AdminIndexRoute
+  '/shop/': typeof ShopIndexRoute
+  '/api/admin/ads': typeof ApiAdminAdsRouteWithChildren
+  '/api/admin/bookings': typeof ApiAdminBookingsRouteWithChildren
+  '/api/admin/customers': typeof ApiAdminCustomersRoute
+  '/api/admin/login': typeof ApiAdminLoginRoute
+  '/api/admin/logout': typeof ApiAdminLogoutRoute
+  '/api/admin/me': typeof ApiAdminMeRoute
+  '/api/admin/messages': typeof ApiAdminMessagesRouteWithChildren
+  '/api/admin/orders': typeof ApiAdminOrdersRouteWithChildren
+  '/api/admin/products': typeof ApiAdminProductsRouteWithChildren
+  '/api/admin/service-categories': typeof ApiAdminServiceCategoriesRouteWithChildren
+  '/api/admin/services': typeof ApiAdminServicesRouteWithChildren
+  '/api/admin/settings': typeof ApiAdminSettingsRoute
+  '/api/admin/stats': typeof ApiAdminStatsRoute
+  '/api/admin/transformations': typeof ApiAdminTransformationsRouteWithChildren
+  '/api/admin/upload': typeof ApiAdminUploadRoute
+  '/api/bookings/$reference': typeof ApiBookingsReferenceRoute
+  '/api/media/$id': typeof ApiMediaIdRoute
+  '/api/orders/$orderNumber': typeof ApiOrdersOrderNumberRoute
+  '/api/products/$slug': typeof ApiProductsSlugRoute
+  '/api/public/health': typeof ApiPublicHealthRoute
+  '/api/public/live': typeof ApiPublicLiveRoute
+  '/api/public/stripe-webhook': typeof ApiPublicStripeWebhookRoute
+  '/api/admin/ads/$id': typeof ApiAdminAdsIdRoute
+  '/api/admin/bookings/$id': typeof ApiAdminBookingsIdRoute
+  '/api/admin/messages/$id': typeof ApiAdminMessagesIdRoute
+  '/api/admin/orders/$id': typeof ApiAdminOrdersIdRoute
+  '/api/admin/products/$id': typeof ApiAdminProductsIdRoute
+  '/api/admin/service-categories/$id': typeof ApiAdminServiceCategoriesIdRoute
+  '/api/admin/services/$id': typeof ApiAdminServicesIdRoute
+  '/api/admin/transformations/$id': typeof ApiAdminTransformationsIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/before-and-after'
+    | '/book'
+    | '/cart'
+    | '/checkout'
+    | '/contact'
+    | '/cookie-policy'
+    | '/privacy-policy'
+    | '/terms-of-service'
+    | '/wishlist'
+    | '/admin/ads'
+    | '/admin/bookings'
+    | '/admin/customers'
+    | '/admin/dashboard'
+    | '/admin/gallery'
+    | '/admin/login'
+    | '/admin/messages'
+    | '/admin/orders'
+    | '/admin/products'
+    | '/admin/services'
+    | '/admin/settings'
+    | '/api/ads'
+    | '/api/availability'
+    | '/api/booking-checkout-session'
+    | '/api/bookings'
+    | '/api/checkout-session'
+    | '/api/messages'
+    | '/api/orders'
+    | '/api/payment-status'
+    | '/api/products'
+    | '/api/services'
+    | '/api/settings'
+    | '/api/transformations'
+    | '/booking-success/$reference'
+    | '/order-success/$orderNumber'
+    | '/shop/$slug'
+    | '/admin/'
+    | '/shop/'
+    | '/api/admin/ads'
+    | '/api/admin/bookings'
+    | '/api/admin/customers'
+    | '/api/admin/login'
+    | '/api/admin/logout'
+    | '/api/admin/me'
+    | '/api/admin/messages'
+    | '/api/admin/orders'
+    | '/api/admin/products'
+    | '/api/admin/service-categories'
+    | '/api/admin/services'
+    | '/api/admin/settings'
+    | '/api/admin/stats'
+    | '/api/admin/transformations'
+    | '/api/admin/upload'
+    | '/api/bookings/$reference'
+    | '/api/media/$id'
+    | '/api/orders/$orderNumber'
+    | '/api/products/$slug'
+    | '/api/public/health'
+    | '/api/public/live'
+    | '/api/public/stripe-webhook'
+    | '/api/admin/ads/$id'
+    | '/api/admin/bookings/$id'
+    | '/api/admin/messages/$id'
+    | '/api/admin/orders/$id'
+    | '/api/admin/products/$id'
+    | '/api/admin/service-categories/$id'
+    | '/api/admin/services/$id'
+    | '/api/admin/transformations/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/before-and-after'
+    | '/book'
+    | '/cart'
+    | '/checkout'
+    | '/contact'
+    | '/cookie-policy'
+    | '/privacy-policy'
+    | '/terms-of-service'
+    | '/wishlist'
+    | '/admin/ads'
+    | '/admin/bookings'
+    | '/admin/customers'
+    | '/admin/dashboard'
+    | '/admin/gallery'
+    | '/admin/login'
+    | '/admin/messages'
+    | '/admin/orders'
+    | '/admin/products'
+    | '/admin/services'
+    | '/admin/settings'
+    | '/api/ads'
+    | '/api/availability'
+    | '/api/booking-checkout-session'
+    | '/api/bookings'
+    | '/api/checkout-session'
+    | '/api/messages'
+    | '/api/orders'
+    | '/api/payment-status'
+    | '/api/products'
+    | '/api/services'
+    | '/api/settings'
+    | '/api/transformations'
+    | '/booking-success/$reference'
+    | '/order-success/$orderNumber'
+    | '/shop/$slug'
+    | '/admin'
+    | '/shop'
+    | '/api/admin/ads'
+    | '/api/admin/bookings'
+    | '/api/admin/customers'
+    | '/api/admin/login'
+    | '/api/admin/logout'
+    | '/api/admin/me'
+    | '/api/admin/messages'
+    | '/api/admin/orders'
+    | '/api/admin/products'
+    | '/api/admin/service-categories'
+    | '/api/admin/services'
+    | '/api/admin/settings'
+    | '/api/admin/stats'
+    | '/api/admin/transformations'
+    | '/api/admin/upload'
+    | '/api/bookings/$reference'
+    | '/api/media/$id'
+    | '/api/orders/$orderNumber'
+    | '/api/products/$slug'
+    | '/api/public/health'
+    | '/api/public/live'
+    | '/api/public/stripe-webhook'
+    | '/api/admin/ads/$id'
+    | '/api/admin/bookings/$id'
+    | '/api/admin/messages/$id'
+    | '/api/admin/orders/$id'
+    | '/api/admin/products/$id'
+    | '/api/admin/service-categories/$id'
+    | '/api/admin/services/$id'
+    | '/api/admin/transformations/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/before-and-after'
+    | '/book'
+    | '/cart'
+    | '/checkout'
+    | '/contact'
+    | '/cookie-policy'
+    | '/privacy-policy'
+    | '/terms-of-service'
+    | '/wishlist'
+    | '/admin/ads'
+    | '/admin/bookings'
+    | '/admin/customers'
+    | '/admin/dashboard'
+    | '/admin/gallery'
+    | '/admin/login'
+    | '/admin/messages'
+    | '/admin/orders'
+    | '/admin/products'
+    | '/admin/services'
+    | '/admin/settings'
+    | '/api/ads'
+    | '/api/availability'
+    | '/api/booking-checkout-session'
+    | '/api/bookings'
+    | '/api/checkout-session'
+    | '/api/messages'
+    | '/api/orders'
+    | '/api/payment-status'
+    | '/api/products'
+    | '/api/services'
+    | '/api/settings'
+    | '/api/transformations'
+    | '/booking-success/$reference'
+    | '/order-success/$orderNumber'
+    | '/shop/$slug'
+    | '/admin/'
+    | '/shop/'
+    | '/api/admin/ads'
+    | '/api/admin/bookings'
+    | '/api/admin/customers'
+    | '/api/admin/login'
+    | '/api/admin/logout'
+    | '/api/admin/me'
+    | '/api/admin/messages'
+    | '/api/admin/orders'
+    | '/api/admin/products'
+    | '/api/admin/service-categories'
+    | '/api/admin/services'
+    | '/api/admin/settings'
+    | '/api/admin/stats'
+    | '/api/admin/transformations'
+    | '/api/admin/upload'
+    | '/api/bookings/$reference'
+    | '/api/media/$id'
+    | '/api/orders/$orderNumber'
+    | '/api/products/$slug'
+    | '/api/public/health'
+    | '/api/public/live'
+    | '/api/public/stripe-webhook'
+    | '/api/admin/ads/$id'
+    | '/api/admin/bookings/$id'
+    | '/api/admin/messages/$id'
+    | '/api/admin/orders/$id'
+    | '/api/admin/products/$id'
+    | '/api/admin/service-categories/$id'
+    | '/api/admin/services/$id'
+    | '/api/admin/transformations/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  BeforeAndAfterRoute: typeof BeforeAndAfterRoute
+  BookRoute: typeof BookRoute
+  CartRoute: typeof CartRoute
+  CheckoutRoute: typeof CheckoutRoute
+  ContactRoute: typeof ContactRoute
+  CookiePolicyRoute: typeof CookiePolicyRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  TermsOfServiceRoute: typeof TermsOfServiceRoute
+  WishlistRoute: typeof WishlistRoute
+  AdminAdsRoute: typeof AdminAdsRoute
+  AdminBookingsRoute: typeof AdminBookingsRoute
+  AdminCustomersRoute: typeof AdminCustomersRoute
+  AdminDashboardRoute: typeof AdminDashboardRoute
+  AdminGalleryRoute: typeof AdminGalleryRoute
+  AdminLoginRoute: typeof AdminLoginRoute
+  AdminMessagesRoute: typeof AdminMessagesRoute
+  AdminOrdersRoute: typeof AdminOrdersRoute
+  AdminProductsRoute: typeof AdminProductsRoute
+  AdminServicesRoute: typeof AdminServicesRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
+  ApiAdsRoute: typeof ApiAdsRoute
+  ApiAvailabilityRoute: typeof ApiAvailabilityRoute
+  ApiBookingCheckoutSessionRoute: typeof ApiBookingCheckoutSessionRoute
+  ApiBookingsRoute: typeof ApiBookingsRouteWithChildren
+  ApiCheckoutSessionRoute: typeof ApiCheckoutSessionRoute
+  ApiMessagesRoute: typeof ApiMessagesRoute
+  ApiOrdersRoute: typeof ApiOrdersRouteWithChildren
+  ApiPaymentStatusRoute: typeof ApiPaymentStatusRoute
+  ApiProductsRoute: typeof ApiProductsRouteWithChildren
+  ApiServicesRoute: typeof ApiServicesRoute
+  ApiSettingsRoute: typeof ApiSettingsRoute
+  ApiTransformationsRoute: typeof ApiTransformationsRoute
+  BookingSuccessReferenceRoute: typeof BookingSuccessReferenceRoute
+  OrderSuccessOrderNumberRoute: typeof OrderSuccessOrderNumberRoute
+  ShopSlugRoute: typeof ShopSlugRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+  ShopIndexRoute: typeof ShopIndexRoute
+  ApiAdminAdsRoute: typeof ApiAdminAdsRouteWithChildren
+  ApiAdminBookingsRoute: typeof ApiAdminBookingsRouteWithChildren
+  ApiAdminCustomersRoute: typeof ApiAdminCustomersRoute
+  ApiAdminLoginRoute: typeof ApiAdminLoginRoute
+  ApiAdminLogoutRoute: typeof ApiAdminLogoutRoute
+  ApiAdminMeRoute: typeof ApiAdminMeRoute
+  ApiAdminMessagesRoute: typeof ApiAdminMessagesRouteWithChildren
+  ApiAdminOrdersRoute: typeof ApiAdminOrdersRouteWithChildren
+  ApiAdminProductsRoute: typeof ApiAdminProductsRouteWithChildren
+  ApiAdminServiceCategoriesRoute: typeof ApiAdminServiceCategoriesRouteWithChildren
+  ApiAdminServicesRoute: typeof ApiAdminServicesRouteWithChildren
+  ApiAdminSettingsRoute: typeof ApiAdminSettingsRoute
+  ApiAdminStatsRoute: typeof ApiAdminStatsRoute
+  ApiAdminTransformationsRoute: typeof ApiAdminTransformationsRouteWithChildren
+  ApiAdminUploadRoute: typeof ApiAdminUploadRoute
+  ApiMediaIdRoute: typeof ApiMediaIdRoute
+  ApiPublicHealthRoute: typeof ApiPublicHealthRoute
+  ApiPublicLiveRoute: typeof ApiPublicLiveRoute
+  ApiPublicStripeWebhookRoute: typeof ApiPublicStripeWebhookRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +929,676 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/before-and-after': {
+      id: '/before-and-after'
+      path: '/before-and-after'
+      fullPath: '/before-and-after'
+      preLoaderRoute: typeof BeforeAndAfterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/book': {
+      id: '/book'
+      path: '/book'
+      fullPath: '/book'
+      preLoaderRoute: typeof BookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cart': {
+      id: '/cart'
+      path: '/cart'
+      fullPath: '/cart'
+      preLoaderRoute: typeof CartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cookie-policy': {
+      id: '/cookie-policy'
+      path: '/cookie-policy'
+      fullPath: '/cookie-policy'
+      preLoaderRoute: typeof CookiePolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms-of-service': {
+      id: '/terms-of-service'
+      path: '/terms-of-service'
+      fullPath: '/terms-of-service'
+      preLoaderRoute: typeof TermsOfServiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/wishlist': {
+      id: '/wishlist'
+      path: '/wishlist'
+      fullPath: '/wishlist'
+      preLoaderRoute: typeof WishlistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/ads': {
+      id: '/admin/ads'
+      path: '/admin/ads'
+      fullPath: '/admin/ads'
+      preLoaderRoute: typeof AdminAdsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/bookings': {
+      id: '/admin/bookings'
+      path: '/admin/bookings'
+      fullPath: '/admin/bookings'
+      preLoaderRoute: typeof AdminBookingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/customers': {
+      id: '/admin/customers'
+      path: '/admin/customers'
+      fullPath: '/admin/customers'
+      preLoaderRoute: typeof AdminCustomersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/dashboard': {
+      id: '/admin/dashboard'
+      path: '/admin/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/gallery': {
+      id: '/admin/gallery'
+      path: '/admin/gallery'
+      fullPath: '/admin/gallery'
+      preLoaderRoute: typeof AdminGalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/messages': {
+      id: '/admin/messages'
+      path: '/admin/messages'
+      fullPath: '/admin/messages'
+      preLoaderRoute: typeof AdminMessagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/orders': {
+      id: '/admin/orders'
+      path: '/admin/orders'
+      fullPath: '/admin/orders'
+      preLoaderRoute: typeof AdminOrdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/products': {
+      id: '/admin/products'
+      path: '/admin/products'
+      fullPath: '/admin/products'
+      preLoaderRoute: typeof AdminProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/services': {
+      id: '/admin/services'
+      path: '/admin/services'
+      fullPath: '/admin/services'
+      preLoaderRoute: typeof AdminServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/admin/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/ads': {
+      id: '/api/ads'
+      path: '/api/ads'
+      fullPath: '/api/ads'
+      preLoaderRoute: typeof ApiAdsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/availability': {
+      id: '/api/availability'
+      path: '/api/availability'
+      fullPath: '/api/availability'
+      preLoaderRoute: typeof ApiAvailabilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/booking-checkout-session': {
+      id: '/api/booking-checkout-session'
+      path: '/api/booking-checkout-session'
+      fullPath: '/api/booking-checkout-session'
+      preLoaderRoute: typeof ApiBookingCheckoutSessionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/bookings': {
+      id: '/api/bookings'
+      path: '/api/bookings'
+      fullPath: '/api/bookings'
+      preLoaderRoute: typeof ApiBookingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/checkout-session': {
+      id: '/api/checkout-session'
+      path: '/api/checkout-session'
+      fullPath: '/api/checkout-session'
+      preLoaderRoute: typeof ApiCheckoutSessionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/messages': {
+      id: '/api/messages'
+      path: '/api/messages'
+      fullPath: '/api/messages'
+      preLoaderRoute: typeof ApiMessagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/orders': {
+      id: '/api/orders'
+      path: '/api/orders'
+      fullPath: '/api/orders'
+      preLoaderRoute: typeof ApiOrdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/payment-status': {
+      id: '/api/payment-status'
+      path: '/api/payment-status'
+      fullPath: '/api/payment-status'
+      preLoaderRoute: typeof ApiPaymentStatusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/products': {
+      id: '/api/products'
+      path: '/api/products'
+      fullPath: '/api/products'
+      preLoaderRoute: typeof ApiProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/services': {
+      id: '/api/services'
+      path: '/api/services'
+      fullPath: '/api/services'
+      preLoaderRoute: typeof ApiServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/settings': {
+      id: '/api/settings'
+      path: '/api/settings'
+      fullPath: '/api/settings'
+      preLoaderRoute: typeof ApiSettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/transformations': {
+      id: '/api/transformations'
+      path: '/api/transformations'
+      fullPath: '/api/transformations'
+      preLoaderRoute: typeof ApiTransformationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/booking-success/$reference': {
+      id: '/booking-success/$reference'
+      path: '/booking-success/$reference'
+      fullPath: '/booking-success/$reference'
+      preLoaderRoute: typeof BookingSuccessReferenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/order-success/$orderNumber': {
+      id: '/order-success/$orderNumber'
+      path: '/order-success/$orderNumber'
+      fullPath: '/order-success/$orderNumber'
+      preLoaderRoute: typeof OrderSuccessOrderNumberRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop/': {
+      id: '/shop/'
+      path: '/shop'
+      fullPath: '/shop/'
+      preLoaderRoute: typeof ShopIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop/$slug': {
+      id: '/shop/$slug'
+      path: '/shop/$slug'
+      fullPath: '/shop/$slug'
+      preLoaderRoute: typeof ShopSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/ads': {
+      id: '/api/admin/ads'
+      path: '/api/admin/ads'
+      fullPath: '/api/admin/ads'
+      preLoaderRoute: typeof ApiAdminAdsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/bookings': {
+      id: '/api/admin/bookings'
+      path: '/api/admin/bookings'
+      fullPath: '/api/admin/bookings'
+      preLoaderRoute: typeof ApiAdminBookingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/customers': {
+      id: '/api/admin/customers'
+      path: '/api/admin/customers'
+      fullPath: '/api/admin/customers'
+      preLoaderRoute: typeof ApiAdminCustomersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/login': {
+      id: '/api/admin/login'
+      path: '/api/admin/login'
+      fullPath: '/api/admin/login'
+      preLoaderRoute: typeof ApiAdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/logout': {
+      id: '/api/admin/logout'
+      path: '/api/admin/logout'
+      fullPath: '/api/admin/logout'
+      preLoaderRoute: typeof ApiAdminLogoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/me': {
+      id: '/api/admin/me'
+      path: '/api/admin/me'
+      fullPath: '/api/admin/me'
+      preLoaderRoute: typeof ApiAdminMeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/messages': {
+      id: '/api/admin/messages'
+      path: '/api/admin/messages'
+      fullPath: '/api/admin/messages'
+      preLoaderRoute: typeof ApiAdminMessagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/orders': {
+      id: '/api/admin/orders'
+      path: '/api/admin/orders'
+      fullPath: '/api/admin/orders'
+      preLoaderRoute: typeof ApiAdminOrdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/products': {
+      id: '/api/admin/products'
+      path: '/api/admin/products'
+      fullPath: '/api/admin/products'
+      preLoaderRoute: typeof ApiAdminProductsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/service-categories': {
+      id: '/api/admin/service-categories'
+      path: '/api/admin/service-categories'
+      fullPath: '/api/admin/service-categories'
+      preLoaderRoute: typeof ApiAdminServiceCategoriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/services': {
+      id: '/api/admin/services'
+      path: '/api/admin/services'
+      fullPath: '/api/admin/services'
+      preLoaderRoute: typeof ApiAdminServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/settings': {
+      id: '/api/admin/settings'
+      path: '/api/admin/settings'
+      fullPath: '/api/admin/settings'
+      preLoaderRoute: typeof ApiAdminSettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/stats': {
+      id: '/api/admin/stats'
+      path: '/api/admin/stats'
+      fullPath: '/api/admin/stats'
+      preLoaderRoute: typeof ApiAdminStatsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/transformations': {
+      id: '/api/admin/transformations'
+      path: '/api/admin/transformations'
+      fullPath: '/api/admin/transformations'
+      preLoaderRoute: typeof ApiAdminTransformationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/upload': {
+      id: '/api/admin/upload'
+      path: '/api/admin/upload'
+      fullPath: '/api/admin/upload'
+      preLoaderRoute: typeof ApiAdminUploadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/bookings/$reference': {
+      id: '/api/bookings/$reference'
+      path: '/$reference'
+      fullPath: '/api/bookings/$reference'
+      preLoaderRoute: typeof ApiBookingsReferenceRouteImport
+      parentRoute: typeof ApiBookingsRoute
+    }
+    '/api/media/$id': {
+      id: '/api/media/$id'
+      path: '/api/media/$id'
+      fullPath: '/api/media/$id'
+      preLoaderRoute: typeof ApiMediaIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/orders/$orderNumber': {
+      id: '/api/orders/$orderNumber'
+      path: '/$orderNumber'
+      fullPath: '/api/orders/$orderNumber'
+      preLoaderRoute: typeof ApiOrdersOrderNumberRouteImport
+      parentRoute: typeof ApiOrdersRoute
+    }
+    '/api/products/$slug': {
+      id: '/api/products/$slug'
+      path: '/$slug'
+      fullPath: '/api/products/$slug'
+      preLoaderRoute: typeof ApiProductsSlugRouteImport
+      parentRoute: typeof ApiProductsRoute
+    }
+    '/api/public/health': {
+      id: '/api/public/health'
+      path: '/api/public/health'
+      fullPath: '/api/public/health'
+      preLoaderRoute: typeof ApiPublicHealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/live': {
+      id: '/api/public/live'
+      path: '/api/public/live'
+      fullPath: '/api/public/live'
+      preLoaderRoute: typeof ApiPublicLiveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/stripe-webhook': {
+      id: '/api/public/stripe-webhook'
+      path: '/api/public/stripe-webhook'
+      fullPath: '/api/public/stripe-webhook'
+      preLoaderRoute: typeof ApiPublicStripeWebhookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/ads/$id': {
+      id: '/api/admin/ads/$id'
+      path: '/$id'
+      fullPath: '/api/admin/ads/$id'
+      preLoaderRoute: typeof ApiAdminAdsIdRouteImport
+      parentRoute: typeof ApiAdminAdsRoute
+    }
+    '/api/admin/bookings/$id': {
+      id: '/api/admin/bookings/$id'
+      path: '/$id'
+      fullPath: '/api/admin/bookings/$id'
+      preLoaderRoute: typeof ApiAdminBookingsIdRouteImport
+      parentRoute: typeof ApiAdminBookingsRoute
+    }
+    '/api/admin/messages/$id': {
+      id: '/api/admin/messages/$id'
+      path: '/$id'
+      fullPath: '/api/admin/messages/$id'
+      preLoaderRoute: typeof ApiAdminMessagesIdRouteImport
+      parentRoute: typeof ApiAdminMessagesRoute
+    }
+    '/api/admin/orders/$id': {
+      id: '/api/admin/orders/$id'
+      path: '/$id'
+      fullPath: '/api/admin/orders/$id'
+      preLoaderRoute: typeof ApiAdminOrdersIdRouteImport
+      parentRoute: typeof ApiAdminOrdersRoute
+    }
+    '/api/admin/products/$id': {
+      id: '/api/admin/products/$id'
+      path: '/$id'
+      fullPath: '/api/admin/products/$id'
+      preLoaderRoute: typeof ApiAdminProductsIdRouteImport
+      parentRoute: typeof ApiAdminProductsRoute
+    }
+    '/api/admin/service-categories/$id': {
+      id: '/api/admin/service-categories/$id'
+      path: '/$id'
+      fullPath: '/api/admin/service-categories/$id'
+      preLoaderRoute: typeof ApiAdminServiceCategoriesIdRouteImport
+      parentRoute: typeof ApiAdminServiceCategoriesRoute
+    }
+    '/api/admin/services/$id': {
+      id: '/api/admin/services/$id'
+      path: '/$id'
+      fullPath: '/api/admin/services/$id'
+      preLoaderRoute: typeof ApiAdminServicesIdRouteImport
+      parentRoute: typeof ApiAdminServicesRoute
+    }
+    '/api/admin/transformations/$id': {
+      id: '/api/admin/transformations/$id'
+      path: '/$id'
+      fullPath: '/api/admin/transformations/$id'
+      preLoaderRoute: typeof ApiAdminTransformationsIdRouteImport
+      parentRoute: typeof ApiAdminTransformationsRoute
+    }
   }
 }
 
+interface ApiBookingsRouteChildren {
+  ApiBookingsReferenceRoute: typeof ApiBookingsReferenceRoute
+}
+
+const ApiBookingsRouteChildren: ApiBookingsRouteChildren = {
+  ApiBookingsReferenceRoute: ApiBookingsReferenceRoute,
+}
+
+const ApiBookingsRouteWithChildren = ApiBookingsRoute._addFileChildren(
+  ApiBookingsRouteChildren,
+)
+
+interface ApiOrdersRouteChildren {
+  ApiOrdersOrderNumberRoute: typeof ApiOrdersOrderNumberRoute
+}
+
+const ApiOrdersRouteChildren: ApiOrdersRouteChildren = {
+  ApiOrdersOrderNumberRoute: ApiOrdersOrderNumberRoute,
+}
+
+const ApiOrdersRouteWithChildren = ApiOrdersRoute._addFileChildren(
+  ApiOrdersRouteChildren,
+)
+
+interface ApiProductsRouteChildren {
+  ApiProductsSlugRoute: typeof ApiProductsSlugRoute
+}
+
+const ApiProductsRouteChildren: ApiProductsRouteChildren = {
+  ApiProductsSlugRoute: ApiProductsSlugRoute,
+}
+
+const ApiProductsRouteWithChildren = ApiProductsRoute._addFileChildren(
+  ApiProductsRouteChildren,
+)
+
+interface ApiAdminAdsRouteChildren {
+  ApiAdminAdsIdRoute: typeof ApiAdminAdsIdRoute
+}
+
+const ApiAdminAdsRouteChildren: ApiAdminAdsRouteChildren = {
+  ApiAdminAdsIdRoute: ApiAdminAdsIdRoute,
+}
+
+const ApiAdminAdsRouteWithChildren = ApiAdminAdsRoute._addFileChildren(
+  ApiAdminAdsRouteChildren,
+)
+
+interface ApiAdminBookingsRouteChildren {
+  ApiAdminBookingsIdRoute: typeof ApiAdminBookingsIdRoute
+}
+
+const ApiAdminBookingsRouteChildren: ApiAdminBookingsRouteChildren = {
+  ApiAdminBookingsIdRoute: ApiAdminBookingsIdRoute,
+}
+
+const ApiAdminBookingsRouteWithChildren =
+  ApiAdminBookingsRoute._addFileChildren(ApiAdminBookingsRouteChildren)
+
+interface ApiAdminMessagesRouteChildren {
+  ApiAdminMessagesIdRoute: typeof ApiAdminMessagesIdRoute
+}
+
+const ApiAdminMessagesRouteChildren: ApiAdminMessagesRouteChildren = {
+  ApiAdminMessagesIdRoute: ApiAdminMessagesIdRoute,
+}
+
+const ApiAdminMessagesRouteWithChildren =
+  ApiAdminMessagesRoute._addFileChildren(ApiAdminMessagesRouteChildren)
+
+interface ApiAdminOrdersRouteChildren {
+  ApiAdminOrdersIdRoute: typeof ApiAdminOrdersIdRoute
+}
+
+const ApiAdminOrdersRouteChildren: ApiAdminOrdersRouteChildren = {
+  ApiAdminOrdersIdRoute: ApiAdminOrdersIdRoute,
+}
+
+const ApiAdminOrdersRouteWithChildren = ApiAdminOrdersRoute._addFileChildren(
+  ApiAdminOrdersRouteChildren,
+)
+
+interface ApiAdminProductsRouteChildren {
+  ApiAdminProductsIdRoute: typeof ApiAdminProductsIdRoute
+}
+
+const ApiAdminProductsRouteChildren: ApiAdminProductsRouteChildren = {
+  ApiAdminProductsIdRoute: ApiAdminProductsIdRoute,
+}
+
+const ApiAdminProductsRouteWithChildren =
+  ApiAdminProductsRoute._addFileChildren(ApiAdminProductsRouteChildren)
+
+interface ApiAdminServiceCategoriesRouteChildren {
+  ApiAdminServiceCategoriesIdRoute: typeof ApiAdminServiceCategoriesIdRoute
+}
+
+const ApiAdminServiceCategoriesRouteChildren: ApiAdminServiceCategoriesRouteChildren =
+  {
+    ApiAdminServiceCategoriesIdRoute: ApiAdminServiceCategoriesIdRoute,
+  }
+
+const ApiAdminServiceCategoriesRouteWithChildren =
+  ApiAdminServiceCategoriesRoute._addFileChildren(
+    ApiAdminServiceCategoriesRouteChildren,
+  )
+
+interface ApiAdminServicesRouteChildren {
+  ApiAdminServicesIdRoute: typeof ApiAdminServicesIdRoute
+}
+
+const ApiAdminServicesRouteChildren: ApiAdminServicesRouteChildren = {
+  ApiAdminServicesIdRoute: ApiAdminServicesIdRoute,
+}
+
+const ApiAdminServicesRouteWithChildren =
+  ApiAdminServicesRoute._addFileChildren(ApiAdminServicesRouteChildren)
+
+interface ApiAdminTransformationsRouteChildren {
+  ApiAdminTransformationsIdRoute: typeof ApiAdminTransformationsIdRoute
+}
+
+const ApiAdminTransformationsRouteChildren: ApiAdminTransformationsRouteChildren =
+  {
+    ApiAdminTransformationsIdRoute: ApiAdminTransformationsIdRoute,
+  }
+
+const ApiAdminTransformationsRouteWithChildren =
+  ApiAdminTransformationsRoute._addFileChildren(
+    ApiAdminTransformationsRouteChildren,
+  )
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  BeforeAndAfterRoute: BeforeAndAfterRoute,
+  BookRoute: BookRoute,
+  CartRoute: CartRoute,
+  CheckoutRoute: CheckoutRoute,
+  ContactRoute: ContactRoute,
+  CookiePolicyRoute: CookiePolicyRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
+  TermsOfServiceRoute: TermsOfServiceRoute,
+  WishlistRoute: WishlistRoute,
+  AdminAdsRoute: AdminAdsRoute,
+  AdminBookingsRoute: AdminBookingsRoute,
+  AdminCustomersRoute: AdminCustomersRoute,
+  AdminDashboardRoute: AdminDashboardRoute,
+  AdminGalleryRoute: AdminGalleryRoute,
+  AdminLoginRoute: AdminLoginRoute,
+  AdminMessagesRoute: AdminMessagesRoute,
+  AdminOrdersRoute: AdminOrdersRoute,
+  AdminProductsRoute: AdminProductsRoute,
+  AdminServicesRoute: AdminServicesRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
+  ApiAdsRoute: ApiAdsRoute,
+  ApiAvailabilityRoute: ApiAvailabilityRoute,
+  ApiBookingCheckoutSessionRoute: ApiBookingCheckoutSessionRoute,
+  ApiBookingsRoute: ApiBookingsRouteWithChildren,
+  ApiCheckoutSessionRoute: ApiCheckoutSessionRoute,
+  ApiMessagesRoute: ApiMessagesRoute,
+  ApiOrdersRoute: ApiOrdersRouteWithChildren,
+  ApiPaymentStatusRoute: ApiPaymentStatusRoute,
+  ApiProductsRoute: ApiProductsRouteWithChildren,
+  ApiServicesRoute: ApiServicesRoute,
+  ApiSettingsRoute: ApiSettingsRoute,
+  ApiTransformationsRoute: ApiTransformationsRoute,
+  BookingSuccessReferenceRoute: BookingSuccessReferenceRoute,
+  OrderSuccessOrderNumberRoute: OrderSuccessOrderNumberRoute,
+  ShopSlugRoute: ShopSlugRoute,
+  AdminIndexRoute: AdminIndexRoute,
+  ShopIndexRoute: ShopIndexRoute,
+  ApiAdminAdsRoute: ApiAdminAdsRouteWithChildren,
+  ApiAdminBookingsRoute: ApiAdminBookingsRouteWithChildren,
+  ApiAdminCustomersRoute: ApiAdminCustomersRoute,
+  ApiAdminLoginRoute: ApiAdminLoginRoute,
+  ApiAdminLogoutRoute: ApiAdminLogoutRoute,
+  ApiAdminMeRoute: ApiAdminMeRoute,
+  ApiAdminMessagesRoute: ApiAdminMessagesRouteWithChildren,
+  ApiAdminOrdersRoute: ApiAdminOrdersRouteWithChildren,
+  ApiAdminProductsRoute: ApiAdminProductsRouteWithChildren,
+  ApiAdminServiceCategoriesRoute: ApiAdminServiceCategoriesRouteWithChildren,
+  ApiAdminServicesRoute: ApiAdminServicesRouteWithChildren,
+  ApiAdminSettingsRoute: ApiAdminSettingsRoute,
+  ApiAdminStatsRoute: ApiAdminStatsRoute,
+  ApiAdminTransformationsRoute: ApiAdminTransformationsRouteWithChildren,
+  ApiAdminUploadRoute: ApiAdminUploadRoute,
+  ApiMediaIdRoute: ApiMediaIdRoute,
+  ApiPublicHealthRoute: ApiPublicHealthRoute,
+  ApiPublicLiveRoute: ApiPublicLiveRoute,
+  ApiPublicStripeWebhookRoute: ApiPublicStripeWebhookRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
