@@ -11,17 +11,20 @@ import { AdSlot } from "@/components/ad-slot";
 
 export const Route = createFileRoute("/shop/$slug")({
   head: ({ params }) => {
-    const title = "Product — Mayor Beauty Place";
-    const description = `Product details for ${params.slug.replace(/-/g, " ")} at Mayor Beauty Place.`;
+    const name = params.slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+    const title = `${name} | Mayor Beauty Place`;
+    const description = `Buy ${name} at Mayor Beauty Place — professional-grade beauty products with UK delivery from our London salon.`;
     return {
       meta: [
         { title },
         { name: "description", content: description },
         { property: "og:title", content: title },
         { property: "og:description", content: description },
+        { property: "og:url", content: `/shop/${params.slug}` },
         { property: "og:type", content: "product" },
         { name: "twitter:card", content: "summary_large_image" },
       ],
+      links: [{ rel: "canonical", href: `/shop/${params.slug}` }],
     };
   },
   component: ProductPage,

@@ -8,17 +8,22 @@ import { useWishlist } from "@/lib/wishlist";
 const title = "Wishlist — Mayor Beauty Place";
 const description =
   "Your saved Mayor Beauty Place products — keep track of the beauty essentials you love and add them to your bag when you're ready.";
+const keywords =
+  "beauty wishlist, saved beauty products, Mayor Beauty Place";
 
 export const Route = createFileRoute("/wishlist")({
   head: () => ({
     meta: [
       { title },
       { name: "description", content: description },
+      { name: "keywords", content: keywords },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:url", content: "/wishlist" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "/wishlist" }],
   }),
   component: WishlistPage,
 });

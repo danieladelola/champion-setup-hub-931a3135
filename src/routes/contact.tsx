@@ -14,17 +14,22 @@ import { addressLines, telHref } from "@/lib/settings";
 const title = "Contact Us — Mayor Beauty Place";
 const description =
   "Get in touch with Mayor Beauty Place at 110/112 Rye Lane, London. Call (+44) 7454804251 or email mayowaani58@gmail.com — we reply within 24 hours.";
+const keywords =
+  "contact beauty salon London, Rye Lane salon phone, beauty salon opening hours, Mayor Beauty Place contact";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title },
       { name: "description", content: description },
+      { name: "keywords", content: keywords },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:url", content: "/contact" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "/contact" }],
   }),
   component: Contact,
 });

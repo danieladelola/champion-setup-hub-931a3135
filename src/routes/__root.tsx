@@ -109,7 +109,33 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           rel: "stylesheet",
           href: appCss,
         },
-        { rel: "icon", href: s.general.favicon_url || "/favicon.png" },
+        { rel: "icon", type: "image/png", href: s.general.favicon_url || "/favicon.png" },
+        {
+          rel: "apple-touch-icon",
+          href: s.general.favicon_url || "/favicon.png",
+        },
+      ],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BeautySalon",
+            name: s.general.site_name,
+            description: s.seo.meta_description,
+            telephone: s.contact.phone,
+            email: s.contact.email,
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "110/112 Rye Lane",
+              addressLocality: "London",
+              postalCode: "SE15 4RZ",
+              addressCountry: "GB",
+            },
+            openingHours: "Mo-Sa 11:00-18:00",
+            sameAs: [s.social.facebook, s.social.instagram, s.social.tiktok].filter(Boolean),
+          }),
+        },
       ],
     };
   },

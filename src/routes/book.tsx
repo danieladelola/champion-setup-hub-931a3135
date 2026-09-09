@@ -36,18 +36,23 @@ import { useSettings } from "@/lib/site-settings";
 
 const title = "Book A Service — Mayor Beauty Place";
 const description =
-  "Book beauty treatments and consultations at Mayor Beauty Place in Peckham, London. Professional ethics, quality products, expert care.";
+  "Book beauty treatments and consultations at Mayor Beauty Place in London. Professional ethics, quality products, expert care.";
+const keywords =
+  "book beauty appointment London, salon booking Rye Lane, beauty treatment booking, lash appointment, facial booking";
 
 export const Route = createFileRoute("/book")({
   head: () => ({
     meta: [
       { title },
       { name: "description", content: description },
+      { name: "keywords", content: keywords },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:url", content: "/book" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "/book" }],
   }),
   component: Book,
 });

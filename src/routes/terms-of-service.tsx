@@ -5,17 +5,22 @@ import { LegalPage, type LegalSection } from "@/components/legal-page";
 const title = "Terms of Service | Mayor Beauty Place";
 const description =
   "The terms that apply when you book a treatment, buy products or use the Mayor Beauty Place website — appointments, cancellations, payments, delivery and returns.";
+const keywords =
+  "terms of service, salon terms, booking terms, Mayor Beauty Place";
 
 export const Route = createFileRoute("/terms-of-service")({
   head: () => ({
     meta: [
       { title },
       { name: "description", content: description },
+      { name: "keywords", content: keywords },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:url", content: "/terms-of-service" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "/terms-of-service" }],
   }),
   component: TermsPage,
 });
