@@ -665,6 +665,12 @@ function Page() {
                 </Field>
               </div>
             </Section>
+
+            <Section title="Blocked dates &amp; closures">
+              <div className="md:col-span-2">
+                <BlockedDatesManager />
+              </div>
+            </Section>
           </TabsContent>
 
           {/* SHOP */}
