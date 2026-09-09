@@ -683,11 +683,13 @@ function Book() {
                         ? UNAVAILABLE_MESSAGE
                         : loadingSlots
                           ? "Checking which times are still free…"
-                          : "Crossed-out times are already booked."}
+                          : isToday && visibleSlots.length === 0
+                            ? "No more times left today (UK time). Please pick another date."
+                            : "All times are UK time. Crossed-out times are already booked."}
                     </p>
                     <div className="grid max-h-[420px] grid-cols-3 gap-2 overflow-y-auto pr-1 sm:grid-cols-4">
 
-                      {(dateBlocked ? [] : slots).map((slot) => {
+                      {(dateBlocked ? [] : visibleSlots).map((slot) => {
                         const disabled = isSlotDisabled(slot);
                         return (
                           <button
