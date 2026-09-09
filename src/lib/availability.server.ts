@@ -138,11 +138,14 @@ export async function getFullyBookedDates(month: string, durationMinutes?: numbe
   return full.sort();
 }
 
-/** Returns true when the requested slot is still free. */
+/** Returns true when the requested slot is still free (UK time). */
 export async function isSlotAvailable(date: string, time: string, durationMinutes?: number) {
   const start = timeToMinutes(time);
   if (start === null) return false;
   if (!(await isBookableDate(date))) return false;
+  const settings = await getSettingsSafe();
+  // A time that has already passed today in the UK can never be booked.
+  if (isPastUkSlot(date, start, settings.booking.min_notice_hours ?? 0)) return false;
   const length =
     durationMinutes && durationMinutes > 0 ? durationMinutes : DEFAULT_DURATION_MINUTES;
   const busy = await getBusyRangesForDate(date);
