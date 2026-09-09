@@ -9,6 +9,8 @@ import {
   unavailableSlots,
   type BusyRange,
 } from "./availability";
+import { getBlockForDate, getBlockedDaysInMonth, isDateBlocked } from "./blocked-dates.server";
+import { UNAVAILABLE_MESSAGE } from "./blocked-dates";
 
 /** Bookings in these states no longer hold their slot. */
 const RELEASED_STATUSES = ["cancelled", "canceled", "declined", "no_show", "expired"];
