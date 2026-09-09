@@ -306,18 +306,32 @@ function Book() {
     data.date && (blockedIsoDates.has(data.date) || dayAvailability?.blocked),
   );
 
-  const nowMinutes = new Date().getHours() * 60 + new Date().getMinutes();
-  const isToday = data.date === toLocalIso(new Date());
+  // A ticking UK clock, so slots for today expire while the page is open.
+  const [ukClock, setUkClock] = useState(() => ukNow());
+  useEffect(() => {
+    const id = setInterval(() => setUkClock(ukNow()), 30_000);
+    return () => clearInterval(id);
+  }, []);
 
-  const isSlotDisabled = (slot: string) => {
-    if (takenSlots.has(slot)) return true;
-    if (isToday) {
-      const [h, m] = slot.split(":").map(Number);
-      const notice = Math.max(0, booking.min_notice_hours) * 60;
-      if ((h ?? 0) * 60 + (m ?? 0) <= nowMinutes + notice) return true;
-    }
-    return false;
+  const isToday = data.date === ukClock.date;
+
+  const slotIsPast = (slot: string) => {
+    if (!data.date) return false;
+    const [h, m] = slot.split(":").map(Number);
+    return isPastUkSlot(
+      data.date,
+      (h ?? 0) * 60 + (m ?? 0),
+      Math.max(0, booking.min_notice_hours),
+    );
   };
+
+  const isSlotDisabled = (slot: string) => takenSlots.has(slot) || slotIsPast(slot);
+
+  // Only future times are offered; taken times stay visible but crossed out.
+  const visibleSlots = useMemo(
+    () => (isToday ? slots.filter((slot) => !slotIsPast(slot)) : slots),
+    [slots, isToday, ukClock, data.date, booking.min_notice_hours],
+  );
 
   // Drop a date that sits on a day the salon has switched off or blocked.
   useEffect(() => {
