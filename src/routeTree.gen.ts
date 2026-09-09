@@ -72,6 +72,7 @@ import { Route as ApiPublicHealthRouteImport } from './routes/api/public/health'
 import { Route as ApiPublicLiveRouteImport } from './routes/api/public/live'
 import { Route as ApiPublicStripeWebhookRouteImport } from './routes/api/public/stripe-webhook'
 import { Route as ApiAdminAdsIdRouteImport } from './routes/api/admin/ads.$id'
+import { Route as ApiAdminBlockedDatesIdRouteImport } from './routes/api/admin/blocked-dates.$id'
 import { Route as ApiAdminBookingsIdRouteImport } from './routes/api/admin/bookings.$id'
 import { Route as ApiAdminMessagesIdRouteImport } from './routes/api/admin/messages.$id'
 import { Route as ApiAdminOrdersIdRouteImport } from './routes/api/admin/orders.$id'
@@ -397,6 +398,11 @@ const ApiAdminAdsIdRoute = ApiAdminAdsIdRouteImport.update({
   path: '/$id',
   getParentRoute: () => ApiAdminAdsRoute,
 } as any)
+const ApiAdminBlockedDatesIdRoute = ApiAdminBlockedDatesIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => ApiAdminBlockedDatesRoute,
+} as any)
 const ApiAdminBookingsIdRoute = ApiAdminBookingsIdRouteImport.update({
   id: '/$id',
   path: '/$id',
@@ -476,7 +482,7 @@ export interface FileRoutesByFullPath {
   '/admin/': typeof AdminIndexRoute
   '/shop/': typeof ShopIndexRoute
   '/api/admin/ads': typeof ApiAdminAdsRouteWithChildren
-  '/api/admin/blocked-dates': typeof ApiAdminBlockedDatesRoute
+  '/api/admin/blocked-dates': typeof ApiAdminBlockedDatesRouteWithChildren
   '/api/admin/bookings': typeof ApiAdminBookingsRouteWithChildren
   '/api/admin/customers': typeof ApiAdminCustomersRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
@@ -499,6 +505,7 @@ export interface FileRoutesByFullPath {
   '/api/public/live': typeof ApiPublicLiveRoute
   '/api/public/stripe-webhook': typeof ApiPublicStripeWebhookRoute
   '/api/admin/ads/$id': typeof ApiAdminAdsIdRoute
+  '/api/admin/blocked-dates/$id': typeof ApiAdminBlockedDatesIdRoute
   '/api/admin/bookings/$id': typeof ApiAdminBookingsIdRoute
   '/api/admin/messages/$id': typeof ApiAdminMessagesIdRoute
   '/api/admin/orders/$id': typeof ApiAdminOrdersIdRoute
@@ -548,7 +555,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminIndexRoute
   '/shop': typeof ShopIndexRoute
   '/api/admin/ads': typeof ApiAdminAdsRouteWithChildren
-  '/api/admin/blocked-dates': typeof ApiAdminBlockedDatesRoute
+  '/api/admin/blocked-dates': typeof ApiAdminBlockedDatesRouteWithChildren
   '/api/admin/bookings': typeof ApiAdminBookingsRouteWithChildren
   '/api/admin/customers': typeof ApiAdminCustomersRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
@@ -571,6 +578,7 @@ export interface FileRoutesByTo {
   '/api/public/live': typeof ApiPublicLiveRoute
   '/api/public/stripe-webhook': typeof ApiPublicStripeWebhookRoute
   '/api/admin/ads/$id': typeof ApiAdminAdsIdRoute
+  '/api/admin/blocked-dates/$id': typeof ApiAdminBlockedDatesIdRoute
   '/api/admin/bookings/$id': typeof ApiAdminBookingsIdRoute
   '/api/admin/messages/$id': typeof ApiAdminMessagesIdRoute
   '/api/admin/orders/$id': typeof ApiAdminOrdersIdRoute
@@ -621,7 +629,7 @@ export interface FileRoutesById {
   '/admin/': typeof AdminIndexRoute
   '/shop/': typeof ShopIndexRoute
   '/api/admin/ads': typeof ApiAdminAdsRouteWithChildren
-  '/api/admin/blocked-dates': typeof ApiAdminBlockedDatesRoute
+  '/api/admin/blocked-dates': typeof ApiAdminBlockedDatesRouteWithChildren
   '/api/admin/bookings': typeof ApiAdminBookingsRouteWithChildren
   '/api/admin/customers': typeof ApiAdminCustomersRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
@@ -644,6 +652,7 @@ export interface FileRoutesById {
   '/api/public/live': typeof ApiPublicLiveRoute
   '/api/public/stripe-webhook': typeof ApiPublicStripeWebhookRoute
   '/api/admin/ads/$id': typeof ApiAdminAdsIdRoute
+  '/api/admin/blocked-dates/$id': typeof ApiAdminBlockedDatesIdRoute
   '/api/admin/bookings/$id': typeof ApiAdminBookingsIdRoute
   '/api/admin/messages/$id': typeof ApiAdminMessagesIdRoute
   '/api/admin/orders/$id': typeof ApiAdminOrdersIdRoute
@@ -718,6 +727,7 @@ export interface FileRouteTypes {
     | '/api/public/live'
     | '/api/public/stripe-webhook'
     | '/api/admin/ads/$id'
+    | '/api/admin/blocked-dates/$id'
     | '/api/admin/bookings/$id'
     | '/api/admin/messages/$id'
     | '/api/admin/orders/$id'
@@ -790,6 +800,7 @@ export interface FileRouteTypes {
     | '/api/public/live'
     | '/api/public/stripe-webhook'
     | '/api/admin/ads/$id'
+    | '/api/admin/blocked-dates/$id'
     | '/api/admin/bookings/$id'
     | '/api/admin/messages/$id'
     | '/api/admin/orders/$id'
@@ -862,6 +873,7 @@ export interface FileRouteTypes {
     | '/api/public/live'
     | '/api/public/stripe-webhook'
     | '/api/admin/ads/$id'
+    | '/api/admin/blocked-dates/$id'
     | '/api/admin/bookings/$id'
     | '/api/admin/messages/$id'
     | '/api/admin/orders/$id'
@@ -912,7 +924,7 @@ export interface RootRouteChildren {
   AdminIndexRoute: typeof AdminIndexRoute
   ShopIndexRoute: typeof ShopIndexRoute
   ApiAdminAdsRoute: typeof ApiAdminAdsRouteWithChildren
-  ApiAdminBlockedDatesRoute: typeof ApiAdminBlockedDatesRoute
+  ApiAdminBlockedDatesRoute: typeof ApiAdminBlockedDatesRouteWithChildren
   ApiAdminBookingsRoute: typeof ApiAdminBookingsRouteWithChildren
   ApiAdminCustomersRoute: typeof ApiAdminCustomersRoute
   ApiAdminLoginRoute: typeof ApiAdminLoginRoute
@@ -1376,6 +1388,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAdminAdsIdRouteImport
       parentRoute: typeof ApiAdminAdsRoute
     }
+    '/api/admin/blocked-dates/$id': {
+      id: '/api/admin/blocked-dates/$id'
+      path: '/$id'
+      fullPath: '/api/admin/blocked-dates/$id'
+      preLoaderRoute: typeof ApiAdminBlockedDatesIdRouteImport
+      parentRoute: typeof ApiAdminBlockedDatesRoute
+    }
     '/api/admin/bookings/$id': {
       id: '/api/admin/bookings/$id'
       path: '/$id'
@@ -1475,6 +1494,17 @@ const ApiAdminAdsRouteChildren: ApiAdminAdsRouteChildren = {
 const ApiAdminAdsRouteWithChildren = ApiAdminAdsRoute._addFileChildren(
   ApiAdminAdsRouteChildren,
 )
+
+interface ApiAdminBlockedDatesRouteChildren {
+  ApiAdminBlockedDatesIdRoute: typeof ApiAdminBlockedDatesIdRoute
+}
+
+const ApiAdminBlockedDatesRouteChildren: ApiAdminBlockedDatesRouteChildren = {
+  ApiAdminBlockedDatesIdRoute: ApiAdminBlockedDatesIdRoute,
+}
+
+const ApiAdminBlockedDatesRouteWithChildren =
+  ApiAdminBlockedDatesRoute._addFileChildren(ApiAdminBlockedDatesRouteChildren)
 
 interface ApiAdminBookingsRouteChildren {
   ApiAdminBookingsIdRoute: typeof ApiAdminBookingsIdRoute
@@ -1601,7 +1631,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminIndexRoute: AdminIndexRoute,
   ShopIndexRoute: ShopIndexRoute,
   ApiAdminAdsRoute: ApiAdminAdsRouteWithChildren,
-  ApiAdminBlockedDatesRoute: ApiAdminBlockedDatesRoute,
+  ApiAdminBlockedDatesRoute: ApiAdminBlockedDatesRouteWithChildren,
   ApiAdminBookingsRoute: ApiAdminBookingsRouteWithChildren,
   ApiAdminCustomersRoute: ApiAdminCustomersRoute,
   ApiAdminLoginRoute: ApiAdminLoginRoute,
