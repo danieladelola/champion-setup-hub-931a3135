@@ -8,7 +8,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { AlertTriangle, CalendarOff, Loader2, Pencil, Plus, Trash2, X } from "lucide-react";
 import { toast } from "sonner";
 
-import { adminApi } from "@/lib/admin-api";
+import { bookingApi } from "@/lib/admin-api";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -45,7 +45,7 @@ export function BlockedDatesManager() {
 
   const { data, isLoading } = useQuery({
     queryKey: ["admin", "blocked-dates"],
-    queryFn: () => adminApi.blockedDates(),
+    queryFn: () => bookingApi.blockedDates(),
   });
 
   const blocks = data?.blocked_dates ?? [];
@@ -68,7 +68,7 @@ export function BlockedDatesManager() {
 
   const { data: affected } = useQuery({
     queryKey: ["admin", "blocked-dates", "affected", checkRange?.start, checkRange?.end],
-    queryFn: () => adminApi.countBookingsInRange(checkRange!.start, checkRange!.end),
+    queryFn: () => bookingApi.countBookingsInRange(checkRange!.start, checkRange!.end),
     enabled: !!checkRange,
   });
 
@@ -99,7 +99,7 @@ export function BlockedDatesManager() {
     mutationFn: async () => {
       const payload = { reason, note };
       if (editing) {
-        await adminApi.updateBlockedDate(editing.id, {
+        await bookingApi.updateBlockedDate(editing.id, {
           ...payload,
           start_date: start,
           end_date: mode === "range" && end ? end : start,
@@ -108,11 +108,11 @@ export function BlockedDatesManager() {
       }
       if (mode === "multiple") {
         for (const day of [...days].sort()) {
-          await adminApi.createBlockedDate({ ...payload, start_date: day, end_date: day });
+          await bookingApi.createBlockedDate({ ...payload, start_date: day, end_date: day });
         }
         return days.length;
       }
-      await adminApi.createBlockedDate({
+      await bookingApi.createBlockedDate({
         ...payload,
         start_date: start,
         end_date: mode === "range" && end ? end : start,
@@ -128,7 +128,7 @@ export function BlockedDatesManager() {
   });
 
   const remove = useMutation({
-    mutationFn: (id: string) => adminApi.deleteBlockedDate(id),
+    mutationFn: (id: string) => bookingApi.deleteBlockedDate(id),
     onSuccess: () => {
       toast.success("Blocked date removed");
       invalidate();
