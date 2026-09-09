@@ -39,7 +39,7 @@ function toBlock(row: Record<string, unknown>): BlockedDate {
     end_date: String(row["end_date"]),
     reason: String(row["reason"] ?? "Other"),
     note: (row["note"] as string | null) ?? null,
-    created_at: row["created_at"] ? String(row["created_at"]) : undefined,
+    ...(row["created_at"] ? { created_at: String(row["created_at"]) } : {}),
   };
 }
 
