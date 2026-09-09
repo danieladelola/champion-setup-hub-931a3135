@@ -67,6 +67,7 @@ export async function isOpenDay(date: string) {
  * not blocked. A blocked date always wins over the normal opening days.
  */
 export async function isBookableDate(date: string) {
+  if (isPastUkDate(date)) return false;
   if (!(await isOpenDay(date))) return false;
   return !(await isDateBlocked(date));
 }
