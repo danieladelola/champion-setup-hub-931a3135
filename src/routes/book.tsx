@@ -345,13 +345,19 @@ function Book() {
     }
   }, [closedDays, blockedIsoDates, data.date]);
 
-  // If the chosen time gets booked by someone else, drop it.
+  // If the chosen time gets booked by someone else, or simply passes, drop it.
   useEffect(() => {
-    if (data.time && takenSlots.has(data.time)) {
+    if (!data.time) return;
+    if (takenSlots.has(data.time)) {
       update("time", "");
       setError("That time was just booked by someone else. Please pick another.");
+      return;
     }
-  }, [takenSlots, data.time]);
+    if (slotIsPast(data.time)) {
+      update("time", "");
+      setError("That time has already passed. Please pick a later one.");
+    }
+  }, [takenSlots, data.time, ukClock]);
 
 
   if (!booking.enabled) {
