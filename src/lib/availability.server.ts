@@ -124,7 +124,7 @@ export async function getFullyBookedDates(month: string, durationMinutes?: numbe
 export async function isSlotAvailable(date: string, time: string, durationMinutes?: number) {
   const start = timeToMinutes(time);
   if (start === null) return false;
-  if (!(await isOpenDay(date))) return false;
+  if (!(await isBookableDate(date))) return false;
   const length =
     durationMinutes && durationMinutes > 0 ? durationMinutes : DEFAULT_DURATION_MINUTES;
   const busy = await getBusyRangesForDate(date);
