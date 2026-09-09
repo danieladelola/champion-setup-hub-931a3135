@@ -246,8 +246,8 @@ function Book() {
   const handleBack = () => setStep((s) => Math.max(s - 1, 1));
 
   const selectedDate = data.date ? new Date(`${data.date}T00:00:00`) : undefined;
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
+  // "Today" is always the UK date, whatever timezone the visitor is in.
+  const today = new Date(`${ukToday()}T00:00:00`);
   const [month, setMonth] = useState<Date>(selectedDate ?? today);
 
   const lastBookableDay = useMemo(() => {
