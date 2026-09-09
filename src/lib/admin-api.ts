@@ -1,4 +1,5 @@
 import type { SiteSettings } from "./settings";
+import type { BlockedDate } from "./blocked-dates";
 export type AdminUser = {
   id: string;
   full_name: string;
@@ -418,6 +419,35 @@ export const bookingApi = {
 
   deleteBooking: (id: string) =>
     request<{ ok: true }>(`/api/admin/bookings/${id}`, { method: "DELETE" }),
+
+  blockedDates: (upcomingOnly = false) =>
+    request<{ blocked_dates: BlockedDate[] }>(
+      `/api/admin/blocked-dates${upcomingOnly ? "?upcoming=1" : ""}`,
+    ),
+  countBookingsInRange: (start: string, end: string) =>
+    request<{ affected_bookings: number }>(
+      `/api/admin/blocked-dates?check_start=${start}&check_end=${end}`,
+    ),
+  createBlockedDate: (body: {
+    start_date: string;
+    end_date: string;
+    reason: string;
+    note?: string;
+  }) =>
+    request<{ blocked_date: BlockedDate; affected_bookings: number }>("/api/admin/blocked-dates", {
+      method: "POST",
+      body: JSON.stringify(body),
+    }),
+  updateBlockedDate: (
+    id: string,
+    body: { start_date: string; end_date: string; reason: string; note?: string },
+  ) =>
+    request<{ blocked_date: BlockedDate }>(`/api/admin/blocked-dates/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(body),
+    }),
+  deleteBlockedDate: (id: string) =>
+    request<{ ok: true }>(`/api/admin/blocked-dates/${id}`, { method: "DELETE" }),
 };
 
 export type PublicService = {
@@ -474,6 +504,9 @@ export const bookingPublicApi = {
       unavailable: string[];
       slots: string[];
       closed: boolean;
+      blocked: boolean;
+      block_reason: string | null;
+      unavailable_message: string | null;
       closed_weekdays: number[];
     }>(
       `/api/availability?date=${encodeURIComponent(date)}${
@@ -481,7 +514,12 @@ export const bookingPublicApi = {
       }${duration && duration > 0 ? `&duration=${duration}` : ""}`,
     ),
   monthAvailability: (month: string, serviceId?: string, duration?: number) =>
-    request<{ month: string; fully_booked: string[]; closed_weekdays: number[] }>(
+    request<{
+      month: string;
+      fully_booked: string[];
+      closed_weekdays: number[];
+      blocked_dates: string[];
+    }>(
       `/api/availability?month=${encodeURIComponent(month)}${
         serviceId ? `&service_id=${encodeURIComponent(serviceId)}` : ""
       }${duration && duration > 0 ? `&duration=${duration}` : ""}`,

@@ -5,6 +5,7 @@ import { Loader2, Save, Upload, X } from "lucide-react";
 import { toast } from "sonner";
 
 import { AdminShell } from "@/components/admin/admin-shell";
+import { BlockedDatesManager } from "@/components/admin/blocked-dates-manager";
 import { adminApi } from "@/lib/admin-api";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -663,6 +664,12 @@ function Page() {
                     onChange={(e) => set("booking", "note", e.target.value)}
                   />
                 </Field>
+              </div>
+            </Section>
+
+            <Section title="Blocked dates &amp; closures">
+              <div className="md:col-span-2">
+                <BlockedDatesManager />
               </div>
             </Section>
           </TabsContent>
