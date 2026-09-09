@@ -59,20 +59,34 @@ export async function isOpenDay(date: string) {
   return isOpenOnDate(settings.booking.open_days, date);
 }
 
+/**
+ * True when the date can be booked at all: an open weekday that the admin has
+ * not blocked. A blocked date always wins over the normal opening days.
+ */
+export async function isBookableDate(date: string) {
+  if (!(await isOpenDay(date))) return false;
+  return !(await isDateBlocked(date));
+}
+
 export async function getDayAvailability(date: string, durationMinutes?: number) {
-  const [busy, slots, settings] = await Promise.all([
+  const [busy, slots, settings, block] = await Promise.all([
     getBusyRangesForDate(date),
     getConfiguredSlots(),
     getSettingsSafe(),
+    getBlockForDate(date).catch(() => null),
   ]);
-  const open = isOpenOnDate(settings.booking.open_days, date);
+  const openWeekday = isOpenOnDate(settings.booking.open_days, date);
+  const open = openWeekday && !block;
   return {
     date,
     busy,
     slots,
     closed: !open,
+    blocked: Boolean(block),
+    block_reason: block?.reason ?? null,
+    unavailable_message: block ? UNAVAILABLE_MESSAGE : null,
     closed_weekdays: closedWeekdays(settings.booking.open_days),
-    // A closed weekday has nothing bookable at all.
+    // A closed weekday or a blocked date has nothing bookable at all.
     unavailable: open ? unavailableSlots(busy, durationMinutes, slots) : slots,
   };
 }
