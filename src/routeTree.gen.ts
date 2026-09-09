@@ -49,6 +49,7 @@ import { Route as OrderSuccessOrderNumberRouteImport } from './routes/order-succ
 import { Route as ShopIndexRouteImport } from './routes/shop.index'
 import { Route as ShopSlugRouteImport } from './routes/shop.$slug'
 import { Route as ApiAdminAdsRouteImport } from './routes/api/admin/ads'
+import { Route as ApiAdminBlockedDatesRouteImport } from './routes/api/admin/blocked-dates'
 import { Route as ApiAdminBookingsRouteImport } from './routes/api/admin/bookings'
 import { Route as ApiAdminCustomersRouteImport } from './routes/api/admin/customers'
 import { Route as ApiAdminLoginRouteImport } from './routes/api/admin/login'
@@ -280,6 +281,11 @@ const ApiAdminAdsRoute = ApiAdminAdsRouteImport.update({
   path: '/api/admin/ads',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAdminBlockedDatesRoute = ApiAdminBlockedDatesRouteImport.update({
+  id: '/api/admin/blocked-dates',
+  path: '/api/admin/blocked-dates',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiAdminBookingsRoute = ApiAdminBookingsRouteImport.update({
   id: '/api/admin/bookings',
   path: '/api/admin/bookings',
@@ -470,6 +476,7 @@ export interface FileRoutesByFullPath {
   '/admin/': typeof AdminIndexRoute
   '/shop/': typeof ShopIndexRoute
   '/api/admin/ads': typeof ApiAdminAdsRouteWithChildren
+  '/api/admin/blocked-dates': typeof ApiAdminBlockedDatesRoute
   '/api/admin/bookings': typeof ApiAdminBookingsRouteWithChildren
   '/api/admin/customers': typeof ApiAdminCustomersRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
@@ -541,6 +548,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminIndexRoute
   '/shop': typeof ShopIndexRoute
   '/api/admin/ads': typeof ApiAdminAdsRouteWithChildren
+  '/api/admin/blocked-dates': typeof ApiAdminBlockedDatesRoute
   '/api/admin/bookings': typeof ApiAdminBookingsRouteWithChildren
   '/api/admin/customers': typeof ApiAdminCustomersRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
@@ -613,6 +621,7 @@ export interface FileRoutesById {
   '/admin/': typeof AdminIndexRoute
   '/shop/': typeof ShopIndexRoute
   '/api/admin/ads': typeof ApiAdminAdsRouteWithChildren
+  '/api/admin/blocked-dates': typeof ApiAdminBlockedDatesRoute
   '/api/admin/bookings': typeof ApiAdminBookingsRouteWithChildren
   '/api/admin/customers': typeof ApiAdminCustomersRoute
   '/api/admin/login': typeof ApiAdminLoginRoute
@@ -686,6 +695,7 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/shop/'
     | '/api/admin/ads'
+    | '/api/admin/blocked-dates'
     | '/api/admin/bookings'
     | '/api/admin/customers'
     | '/api/admin/login'
@@ -757,6 +767,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/shop'
     | '/api/admin/ads'
+    | '/api/admin/blocked-dates'
     | '/api/admin/bookings'
     | '/api/admin/customers'
     | '/api/admin/login'
@@ -828,6 +839,7 @@ export interface FileRouteTypes {
     | '/admin/'
     | '/shop/'
     | '/api/admin/ads'
+    | '/api/admin/blocked-dates'
     | '/api/admin/bookings'
     | '/api/admin/customers'
     | '/api/admin/login'
@@ -900,6 +912,7 @@ export interface RootRouteChildren {
   AdminIndexRoute: typeof AdminIndexRoute
   ShopIndexRoute: typeof ShopIndexRoute
   ApiAdminAdsRoute: typeof ApiAdminAdsRouteWithChildren
+  ApiAdminBlockedDatesRoute: typeof ApiAdminBlockedDatesRoute
   ApiAdminBookingsRoute: typeof ApiAdminBookingsRouteWithChildren
   ApiAdminCustomersRoute: typeof ApiAdminCustomersRoute
   ApiAdminLoginRoute: typeof ApiAdminLoginRoute
@@ -1200,6 +1213,13 @@ declare module '@tanstack/react-router' {
       path: '/api/admin/ads'
       fullPath: '/api/admin/ads'
       preLoaderRoute: typeof ApiAdminAdsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/admin/blocked-dates': {
+      id: '/api/admin/blocked-dates'
+      path: '/api/admin/blocked-dates'
+      fullPath: '/api/admin/blocked-dates'
+      preLoaderRoute: typeof ApiAdminBlockedDatesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/admin/bookings': {
@@ -1581,6 +1601,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminIndexRoute: AdminIndexRoute,
   ShopIndexRoute: ShopIndexRoute,
   ApiAdminAdsRoute: ApiAdminAdsRouteWithChildren,
+  ApiAdminBlockedDatesRoute: ApiAdminBlockedDatesRoute,
   ApiAdminBookingsRoute: ApiAdminBookingsRouteWithChildren,
   ApiAdminCustomersRoute: ApiAdminCustomersRoute,
   ApiAdminLoginRoute: ApiAdminLoginRoute,
