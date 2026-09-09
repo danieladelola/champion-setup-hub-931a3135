@@ -9,15 +9,19 @@ import { AdSlot } from "@/components/ad-slot";
 
 const title = "Before & After — Mayor Beauty Place";
 const description =
-  "See real transformations at Mayor Beauty Place in Peckham, London. Browse our Before & After gallery of beauty treatments and results.";
+  "See real transformations at Mayor Beauty Place in London. Browse our Before & After gallery of beauty treatments and results.";
+const keywords =
+  "beauty before and after, salon transformations London, lash results, facial results, Mayor Beauty Place gallery";
 
 export const Route = createFileRoute("/before-and-after")({
   head: () => ({
     meta: [
       { title },
       { name: "description", content: description },
+      { name: "keywords", content: keywords },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:url", content: "/before-and-after" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

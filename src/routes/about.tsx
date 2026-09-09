@@ -8,20 +8,25 @@ import aboutManicure from "../assets/about/about-manicure.jpg";
 import aboutTeeth from "../assets/about/about-teeth.jpg";
 import { AdSlot } from "@/components/ad-slot";
 
-const title = "About Us — Mayor Beauty Place | Peckham Beauty Salon";
+const title = "About Us — Mayor Beauty Place | Rye Lane Beauty Salon";
 const description =
-  "We have a successful career in the beauty industry — built on professional ethics, expert consultation and quality products. Visit our Peckham, London salon.";
+  "We have a successful career in the beauty industry — built on professional ethics, expert consultation and quality products. Visit our London salon.";
+const keywords =
+  "about Mayor Beauty Place, beauty salon London, beauty consultation, professional beauty therapists, Rye Lane salon";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title },
       { name: "description", content: description },
+      { name: "keywords", content: keywords },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:url", content: "/about" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "/about" }],
   }),
   component: About,
 });
@@ -51,7 +56,7 @@ const values = [
   },
   {
     title: "Modern Mastery",
-    body: "Constantly evolving. We bring global innovation and luxury standards to our local Peckham community.",
+    body: "Constantly evolving. We bring global innovation and luxury standards to our local Rye Lane community.",
   },
 ];
 
@@ -76,7 +81,7 @@ function About() {
         <div className="grid grid-cols-5 grid-rows-6 gap-3">
           <img
             src={aboutFacial}
-            alt="Esthetician applying a facial treatment at Mayor Beauty Place in Peckham"
+            alt="Esthetician applying a facial treatment at Mayor Beauty Place in Rye Lane"
             className="col-span-3 row-span-6 h-full w-full object-cover shadow-soft"
             loading="lazy"
           />

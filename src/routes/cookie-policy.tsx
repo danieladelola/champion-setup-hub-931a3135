@@ -5,17 +5,22 @@ import { LegalPage, type LegalSection } from "@/components/legal-page";
 const title = "Cookie Policy | Mayor Beauty Place";
 const description =
   "What cookies and similar storage the Mayor Beauty Place website uses, what each one does, and how you can control them in your browser.";
+const keywords =
+  "cookie policy, website cookies, Mayor Beauty Place";
 
 export const Route = createFileRoute("/cookie-policy")({
   head: () => ({
     meta: [
       { title },
       { name: "description", content: description },
+      { name: "keywords", content: keywords },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:url", content: "/cookie-policy" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "/cookie-policy" }],
   }),
   component: CookiePage,
 });

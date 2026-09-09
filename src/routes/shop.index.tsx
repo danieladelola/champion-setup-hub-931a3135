@@ -12,17 +12,22 @@ import { useSettings } from "@/lib/site-settings";
 const title = "Shop — Mayor Beauty Place";
 const description =
   "Curated professional-grade beauty essentials from Mayor Beauty Place: serums, lipsticks, lash complexes and more, shipped across the UK.";
+const keywords =
+  "buy beauty products UK, serums, lipstick, lash complex, professional skincare, Mayor Beauty Place shop";
 
 export const Route = createFileRoute("/shop/")({
   head: () => ({
     meta: [
       { title },
       { name: "description", content: description },
+      { name: "keywords", content: keywords },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:url", content: "/shop" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "/shop" }],
   }),
   component: Shop,
 });

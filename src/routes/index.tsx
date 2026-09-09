@@ -33,18 +33,23 @@ import { useSettings } from "../lib/site-settings";
 
 const title = "Mayor Beauty Place | Elevate Your Everyday Look";
 const description =
-  "Mayor Beauty Place: a successful career in the beauty industry. Beauty treatments, expert consultation, professional ethics and quality products in Peckham, London.";
+  "Mayor Beauty Place: a successful career in the beauty industry. Beauty treatments, expert consultation, professional ethics and quality products in London.";
+const keywords =
+  "beauty salon London, beauty treatments Rye Lane, lash extensions London, facials, manicure, beauty products UK, Mayor Beauty Place";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title },
       { name: "description", content: description },
+      { name: "keywords", content: keywords },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:url", content: "/" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "/" }],
   }),
   component: Index,
 });

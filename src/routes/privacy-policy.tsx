@@ -5,17 +5,22 @@ import { LegalPage, type LegalSection } from "@/components/legal-page";
 const title = "Privacy Policy | Mayor Beauty Place";
 const description =
   "How Mayor Beauty Place collects, uses and protects your personal information when you book a treatment, buy products or contact our salon.";
+const keywords =
+  "privacy policy, data protection, Mayor Beauty Place";
 
 export const Route = createFileRoute("/privacy-policy")({
   head: () => ({
     meta: [
       { title },
       { name: "description", content: description },
+      { name: "keywords", content: keywords },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
+      { property: "og:url", content: "/privacy-policy" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: "/privacy-policy" }],
   }),
   component: PrivacyPage,
 });
