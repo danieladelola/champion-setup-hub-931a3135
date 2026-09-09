@@ -19,9 +19,11 @@ export const Route = createFileRoute("/shop/$slug")({
         { name: "description", content: description },
         { property: "og:title", content: title },
         { property: "og:description", content: description },
+        { property: "og:url", content: `/shop/${params.slug}` },
         { property: "og:type", content: "product" },
         { name: "twitter:card", content: "summary_large_image" },
       ],
+      links: [{ rel: "canonical", href: `/shop/${params.slug}` }],
     };
   },
   component: ProductPage,
