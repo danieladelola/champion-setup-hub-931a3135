@@ -29,6 +29,7 @@ import bookingHeroAsset from "@/assets/booking-hero-lashes.webp";
 import { bookingPublicApi } from "@/lib/admin-api";
 import { AdSlot } from "@/components/ad-slot";
 import { buildTimeSlots } from "@/lib/availability";
+import { UNAVAILABLE_MESSAGE } from "@/lib/blocked-dates";
 import { closedWeekdays } from "@/lib/settings";
 import { useSettings } from "@/lib/site-settings";
 
@@ -284,10 +285,25 @@ function Book() {
     [monthAvailability, booking.open_days],
   );
 
+  // Dates the admin has blocked (holidays, breaks, private events).
+  const blockedDates = useMemo(
+    () => (monthAvailability?.blocked_dates ?? []).map((d) => new Date(`${d}T00:00:00`)),
+    [monthAvailability],
+  );
+
+  const blockedIsoDates = useMemo(
+    () => new Set(monthAvailability?.blocked_dates ?? []),
+    [monthAvailability],
+  );
+
   const fullyBookedDates = useMemo(
     () =>
       (monthAvailability?.fully_booked ?? []).map((d) => new Date(`${d}T00:00:00`)),
     [monthAvailability],
+  );
+
+  const dateBlocked = Boolean(
+    data.date && (blockedIsoDates.has(data.date) || dayAvailability?.blocked),
   );
 
   const nowMinutes = new Date().getHours() * 60 + new Date().getMinutes();
@@ -303,13 +319,16 @@ function Book() {
     return false;
   };
 
-  // Drop a date that sits on a day the salon has switched off.
+  // Drop a date that sits on a day the salon has switched off or blocked.
   useEffect(() => {
-    if (data.date && closedDays.includes(new Date(`${data.date}T00:00:00`).getDay())) {
+    if (!data.date) return;
+    const isClosed = closedDays.includes(new Date(`${data.date}T00:00:00`).getDay());
+    if (isClosed || blockedIsoDates.has(data.date)) {
       update("date", "");
       update("time", "");
+      if (blockedIsoDates.has(data.date)) setError(UNAVAILABLE_MESSAGE);
     }
-  }, [closedDays, data.date]);
+  }, [closedDays, blockedIsoDates, data.date]);
 
   // If the chosen time gets booked by someone else, drop it.
   useEffect(() => {
@@ -610,6 +629,7 @@ function Book() {
                           { after: lastBookableDay },
                           ...(closedDays.length ? [{ dayOfWeek: closedDays }] : []),
                           ...fullyBookedDates,
+                          ...blockedDates,
                         ]}
                         defaultMonth={selectedDate ?? today}
                         month={month}
@@ -622,7 +642,12 @@ function Book() {
                       />
 
                     </div>
-                    {data.date && (
+                    {dateBlocked && (
+                      <p className="rounded-xl border border-brand-red/40 bg-brand-red/5 p-3 text-sm text-brand-red">
+                        {dayAvailability?.unavailable_message ?? UNAVAILABLE_MESSAGE}
+                      </p>
+                    )}
+                    {data.date && !dateBlocked && (
                       <p className="text-sm text-muted-foreground">
                         Selected: {new Date(`${data.date}T00:00:00`).toLocaleDateString("en-GB", {
                           weekday: "long",
@@ -639,13 +664,15 @@ function Book() {
                     <p className="text-xs text-muted-foreground">
                       {!data.date
                         ? "Pick a date first to see the free times."
+                        : dateBlocked
+                        ? UNAVAILABLE_MESSAGE
                         : loadingSlots
                           ? "Checking which times are still free…"
                           : "Crossed-out times are already booked."}
                     </p>
                     <div className="grid max-h-[420px] grid-cols-3 gap-2 overflow-y-auto pr-1 sm:grid-cols-4">
 
-                      {slots.map((slot) => {
+                      {(dateBlocked ? [] : slots).map((slot) => {
                         const disabled = isSlotDisabled(slot);
                         return (
                           <button
