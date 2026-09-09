@@ -5,6 +5,7 @@ import { Loader2, Save, Upload, X } from "lucide-react";
 import { toast } from "sonner";
 
 import { AdminShell } from "@/components/admin/admin-shell";
+import { BlockedDatesManager } from "@/components/admin/blocked-dates-manager";
 import { adminApi } from "@/lib/admin-api";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
