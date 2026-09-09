@@ -2,6 +2,8 @@ import { getDb } from "./db.server";
 import { isOpenDay, isSlotAvailable } from "./availability.server";
 import { getBlockForDate } from "./blocked-dates.server";
 import { UNAVAILABLE_MESSAGE } from "./blocked-dates";
+import { isPastUkSlot } from "./uk-time";
+import { timeToMinutes } from "./availability";
 import type { bookingSchema, multiBookingSchema } from "./services.server";
 import type { z } from "zod";
 
@@ -98,6 +100,16 @@ export async function createPendingBooking(input: MultiBookingInput) {
   // The salon can switch weekdays off in admin Settings.
   if (!(await isOpenDay(input.preferred_date))) {
     throw new BookingError("We are closed on that day. Please choose another date.", 400);
+  }
+
+  // Everything runs on UK time (Europe/London), so British Summer Time is
+  // handled automatically. A time that has already gone cannot be booked.
+  const startMinutes = timeToMinutes(input.preferred_time) ?? 0;
+  if (isPastUkSlot(input.preferred_date, startMinutes)) {
+    throw new BookingError(
+      "That time has already passed. Please choose a later time.",
+      400,
+    );
   }
 
   // Guard against two people paying for the same slot (the browser greys taken

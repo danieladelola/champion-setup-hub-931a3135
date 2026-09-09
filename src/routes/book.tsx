@@ -31,6 +31,7 @@ import { AdSlot } from "@/components/ad-slot";
 import { buildTimeSlots } from "@/lib/availability";
 import { UNAVAILABLE_MESSAGE } from "@/lib/blocked-dates";
 import { closedWeekdays } from "@/lib/settings";
+import { isPastUkSlot, ukNow, ukToday } from "@/lib/uk-time";
 import { useSettings } from "@/lib/site-settings";
 
 const title = "Book A Service — Mayor Beauty Place";
@@ -245,8 +246,8 @@ function Book() {
   const handleBack = () => setStep((s) => Math.max(s - 1, 1));
 
   const selectedDate = data.date ? new Date(`${data.date}T00:00:00`) : undefined;
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
+  // "Today" is always the UK date, whatever timezone the visitor is in.
+  const today = new Date(`${ukToday()}T00:00:00`);
   const [month, setMonth] = useState<Date>(selectedDate ?? today);
 
   const lastBookableDay = useMemo(() => {
@@ -306,18 +307,32 @@ function Book() {
     data.date && (blockedIsoDates.has(data.date) || dayAvailability?.blocked),
   );
 
-  const nowMinutes = new Date().getHours() * 60 + new Date().getMinutes();
-  const isToday = data.date === toLocalIso(new Date());
+  // A ticking UK clock, so slots for today expire while the page is open.
+  const [ukClock, setUkClock] = useState(() => ukNow());
+  useEffect(() => {
+    const id = setInterval(() => setUkClock(ukNow()), 30_000);
+    return () => clearInterval(id);
+  }, []);
 
-  const isSlotDisabled = (slot: string) => {
-    if (takenSlots.has(slot)) return true;
-    if (isToday) {
-      const [h, m] = slot.split(":").map(Number);
-      const notice = Math.max(0, booking.min_notice_hours) * 60;
-      if ((h ?? 0) * 60 + (m ?? 0) <= nowMinutes + notice) return true;
-    }
-    return false;
+  const isToday = data.date === ukClock.date;
+
+  const slotIsPast = (slot: string) => {
+    if (!data.date) return false;
+    const [h, m] = slot.split(":").map(Number);
+    return isPastUkSlot(
+      data.date,
+      (h ?? 0) * 60 + (m ?? 0),
+      Math.max(0, booking.min_notice_hours),
+    );
   };
+
+  const isSlotDisabled = (slot: string) => takenSlots.has(slot) || slotIsPast(slot);
+
+  // Only future times are offered; taken times stay visible but crossed out.
+  const visibleSlots = useMemo(
+    () => (isToday ? slots.filter((slot) => !slotIsPast(slot)) : slots),
+    [slots, isToday, ukClock, data.date, booking.min_notice_hours],
+  );
 
   // Drop a date that sits on a day the salon has switched off or blocked.
   useEffect(() => {
@@ -330,13 +345,19 @@ function Book() {
     }
   }, [closedDays, blockedIsoDates, data.date]);
 
-  // If the chosen time gets booked by someone else, drop it.
+  // If the chosen time gets booked by someone else, or simply passes, drop it.
   useEffect(() => {
-    if (data.time && takenSlots.has(data.time)) {
+    if (!data.time) return;
+    if (takenSlots.has(data.time)) {
       update("time", "");
       setError("That time was just booked by someone else. Please pick another.");
+      return;
     }
-  }, [takenSlots, data.time]);
+    if (slotIsPast(data.time)) {
+      update("time", "");
+      setError("That time has already passed. Please pick a later one.");
+    }
+  }, [takenSlots, data.time, ukClock]);
 
 
   if (!booking.enabled) {
@@ -668,11 +689,13 @@ function Book() {
                         ? UNAVAILABLE_MESSAGE
                         : loadingSlots
                           ? "Checking which times are still free…"
-                          : "Crossed-out times are already booked."}
+                          : isToday && visibleSlots.length === 0
+                            ? "No more times left today (UK time). Please pick another date."
+                            : "All times are UK time. Crossed-out times are already booked."}
                     </p>
                     <div className="grid max-h-[420px] grid-cols-3 gap-2 overflow-y-auto pr-1 sm:grid-cols-4">
 
-                      {(dateBlocked ? [] : slots).map((slot) => {
+                      {(dateBlocked ? [] : visibleSlots).map((slot) => {
                         const disabled = isSlotDisabled(slot);
                         return (
                           <button
