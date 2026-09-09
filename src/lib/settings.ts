@@ -80,7 +80,7 @@ export const settingsSchema = z.object({
       phone: text(40).default("(+44) 7901910007"),
       phone_alt: text(40).default("02083897978"),
       whatsapp: text(40).default(""),
-      address: text(400).default("110/112 Peckham Rye Lane\nLondon, United Kingdom.\nPost Code: SE15 4RZ"),
+      address: text(400).default("110/112 Rye Lane\nLondon, United Kingdom.\nPost Code: SE15 4RZ"),
       opening_hours: text(300).default("Monday – Saturday, 11:00 – 18:00"),
       map_embed_url: linkUrl.default(
         "https://www.openstreetmap.org/export/embed.html?bbox=-0.0719%2C51.4673%2C-0.0659%2C51.4733&layer=mapnik&marker=51.4703%2C-0.0689",

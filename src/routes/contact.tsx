@@ -13,7 +13,7 @@ import { addressLines, telHref } from "@/lib/settings";
 
 const title = "Contact Us — Mayor Beauty Place";
 const description =
-  "Get in touch with Mayor Beauty Place at 110/112 Peckham Rye Lane, London. Call (+44) 7454804251 or email mayowaani58@gmail.com — we reply within 24 hours.";
+  "Get in touch with Mayor Beauty Place at 110/112 Rye Lane, London. Call (+44) 7454804251 or email mayowaani58@gmail.com — we reply within 24 hours.";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
