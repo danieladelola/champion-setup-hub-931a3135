@@ -11,6 +11,7 @@ import {
 } from "./availability";
 import { getBlockForDate, getBlockedDaysInMonth, isDateBlocked } from "./blocked-dates.server";
 import { UNAVAILABLE_MESSAGE } from "./blocked-dates";
+import { BOOKING_TIMEZONE, isPastUkDate, isPastUkSlot, isUkToday } from "./uk-time";
 
 /** Bookings in these states no longer hold their slot. */
 const RELEASED_STATUSES = ["cancelled", "canceled", "declined", "no_show", "expired"];
@@ -70,6 +71,15 @@ export async function isBookableDate(date: string) {
   return !(await isDateBlocked(date));
 }
 
+/** Slots that have already passed in UK time (today only). */
+function pastSlots(date: string, slots: string[], minNoticeHours: number) {
+  if (!isUkToday(date)) return [];
+  return slots.filter((slot) => {
+    const start = timeToMinutes(slot);
+    return start !== null && isPastUkSlot(date, start, minNoticeHours);
+  });
+}
+
 export async function getDayAvailability(date: string, durationMinutes?: number) {
   const [busy, slots, settings, block] = await Promise.all([
     getBusyRangesForDate(date),
@@ -78,7 +88,12 @@ export async function getDayAvailability(date: string, durationMinutes?: number)
     getBlockForDate(date).catch(() => null),
   ]);
   const openWeekday = isOpenOnDate(settings.booking.open_days, date);
-  const open = openWeekday && !block;
+  const past = isPastUkDate(date);
+  const open = openWeekday && !block && !past;
+  const notice = settings.booking.min_notice_hours ?? 0;
+  // Times already gone today (UK time) can never be booked.
+  const gone = open ? pastSlots(date, slots, notice) : [];
+  const taken = open ? unavailableSlots(busy, durationMinutes, slots) : slots;
   return {
     date,
     busy,
@@ -88,8 +103,10 @@ export async function getDayAvailability(date: string, durationMinutes?: number)
     block_reason: block?.reason ?? null,
     unavailable_message: block ? UNAVAILABLE_MESSAGE : null,
     closed_weekdays: closedWeekdays(settings.booking.open_days),
-    // A closed weekday or a blocked date has nothing bookable at all.
-    unavailable: open ? unavailableSlots(busy, durationMinutes, slots) : slots,
+    timezone: BOOKING_TIMEZONE,
+    past_slots: gone,
+    // A closed weekday, a past day or a blocked date has nothing bookable.
+    unavailable: [...new Set([...taken, ...gone])],
   };
 }
 
